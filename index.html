@@ -17,7 +17,6 @@ h1,h2,h3,.serif{font-family:'DM Serif Display',serif;font-weight:400}
 button{cursor:pointer;font-family:inherit;border:none;background:none}
 input,select,textarea{font-family:inherit;font-size:14px}
 .hidden{display:none!important}
-/* ── LANDING ─────────────────────────────── */
 .landing{min-height:100vh;display:flex;flex-direction:column;align-items:center;justify-content:center;padding:2rem 1rem;background:linear-gradient(135deg,#f5f1e8 0%,#ebe4d0 100%)}
 .landing-header{text-align:center;margin-bottom:3rem}
 .landing-header h1{font-size:3rem;color:var(--ink);margin-bottom:.5rem}
@@ -34,7 +33,6 @@ input,select,textarea{font-family:inherit;font-size:14px}
 .role-card .btn-enter{background:var(--ink);color:#fff;padding:11px;border-radius:10px;font-weight:600;margin-top:.4rem;transition:background .2s}
 .role-card .btn-enter:hover{background:var(--accent)}
 .role-card .err{color:var(--red);font-size:.82rem;min-height:1em}
-/* ── APP SHELL ─────────────────────────────── */
 .app{min-height:100vh;display:flex;flex-direction:column}
 .topbar{background:var(--ink);color:#fff;padding:.8rem 1.5rem;display:flex;align-items:center;justify-content:space-between;box-shadow:0 2px 10px rgba(0,0,0,.1)}
 .topbar .brand{font-family:'DM Serif Display',serif;font-size:1.4rem;display:flex;align-items:center;gap:.6rem}
@@ -52,7 +50,6 @@ input,select,textarea{font-family:inherit;font-size:14px}
 .tab:hover{color:var(--ink)}
 .tab.active{color:var(--accent);border-bottom-color:var(--accent)}
 .content{flex:1;padding:1.8rem;max-width:1200px;margin:0 auto;width:100%}
-/* ── CARDS & FORMS ─────────────────────────────── */
 .panel{background:var(--card);border-radius:14px;padding:1.6rem;box-shadow:0 2px 12px rgba(0,0,0,.05);margin-bottom:1.2rem}
 .panel h3{font-family:'DM Sans',sans-serif;font-weight:600;font-size:1.05rem;margin-bottom:1rem;color:var(--ink);display:flex;align-items:center;gap:.5rem}
 .panel p.sub{color:var(--muted);font-size:.88rem;margin-bottom:1rem}
@@ -64,19 +61,13 @@ input,select,textarea{font-family:inherit;font-size:14px}
 .form-group input:focus,.form-group select:focus,.form-group textarea:focus{border-color:var(--accent2);background:#fff}
 .form-group textarea{resize:vertical;min-height:70px;font-family:inherit}
 .btn{display:inline-flex;align-items:center;gap:.4rem;padding:10px 18px;border-radius:9px;font-weight:600;font-size:.88rem;transition:all .2s;cursor:pointer;border:none}
-.btn-primary{background:var(--accent);color:#fff}
-.btn-primary:hover{background:#a33333}
-.btn-sec{background:var(--soft);color:var(--ink);border:1.5px solid var(--line)}
-.btn-sec:hover{background:var(--line)}
-.btn-green{background:var(--green);color:#fff}
-.btn-green:hover{background:#1e5a37}
-.btn-blue{background:var(--accent2);color:#fff}
-.btn-blue:hover{background:#0f4680}
-.btn-danger{background:#fff0f0;color:var(--red);border:1.5px solid #f5c6cb}
-.btn-danger:hover{background:#ffd6d6}
+.btn-primary{background:var(--accent);color:#fff}.btn-primary:hover{background:#a33333}
+.btn-sec{background:var(--soft);color:var(--ink);border:1.5px solid var(--line)}.btn-sec:hover{background:var(--line)}
+.btn-green{background:var(--green);color:#fff}.btn-green:hover{background:#1e5a37}
+.btn-blue{background:var(--accent2);color:#fff}.btn-blue:hover{background:#0f4680}
+.btn-danger{background:#fff0f0;color:var(--red);border:1.5px solid #f5c6cb}.btn-danger:hover{background:#ffd6d6}
 .btn-small{padding:6px 12px;font-size:.78rem;border-radius:7px}
 .btn-row{display:flex;gap:.6rem;flex-wrap:wrap;margin-top:1rem}
-/* ── LISTS ─────────────────────────────── */
 .item-list{display:flex;flex-direction:column;gap:.6rem}
 .item{background:var(--soft);border:1.5px solid var(--line);border-radius:11px;padding:1rem 1.1rem;display:flex;align-items:center;gap:1rem;transition:all .2s}
 .item:hover{border-color:var(--accent2);background:#fff}
@@ -87,27 +78,19 @@ input,select,textarea{font-family:inherit;font-size:14px}
 .item .i-meta span{display:inline-flex;align-items:center;gap:.25rem}
 .item .i-actions{display:flex;gap:.4rem;flex-wrap:wrap}
 .pill{display:inline-flex;align-items:center;gap:.25rem;padding:2px 9px;border-radius:100px;font-size:.72rem;font-weight:600}
-.pill-on{background:#d8f0df;color:var(--green)}
-.pill-off{background:#f0e2d8;color:#8a6030}
-.pill-grado{background:#e0ecff;color:var(--accent2)}
-.pill-grupo{background:#ffe8d8;color:var(--orange)}
-/* ── TOGGLE SWITCH ─────────────────────────────── */
+.pill-on{background:#d8f0df;color:var(--green)}.pill-off{background:#f0e2d8;color:#8a6030}
+.pill-grado{background:#e0ecff;color:var(--accent2)}.pill-grupo{background:#ffe8d8;color:var(--orange)}
 .switch{position:relative;display:inline-block;width:44px;height:24px;flex-shrink:0}
 .switch input{opacity:0;width:0;height:0}
 .slider{position:absolute;cursor:pointer;inset:0;background:#ccc;border-radius:24px;transition:.3s}
 .slider:before{position:absolute;content:"";height:18px;width:18px;left:3px;bottom:3px;background:#fff;border-radius:50%;transition:.3s}
 .switch input:checked+.slider{background:var(--green)}
 .switch input:checked+.slider:before{transform:translateX(20px)}
-/* ── EMPTY STATE ─────────────────────────────── */
 .empty{text-align:center;padding:3rem 1.5rem;color:var(--muted)}
 .empty .big{font-size:3rem;margin-bottom:.8rem}
-.empty p{font-size:.95rem}
-/* ── TOAST ─────────────────────────────── */
-.toast{position:fixed;top:20px;right:20px;background:var(--ink);color:#fff;padding:13px 20px;border-radius:10px;box-shadow:0 6px 20px rgba(0,0,0,.2);z-index:9999;animation:slidein .3s ease-out;font-size:.9rem;max-width:320px}
-.toast.success{background:var(--green)}
-.toast.error{background:var(--red)}
+.toast{position:fixed;top:20px;right:20px;background:var(--ink);color:#fff;padding:13px 20px;border-radius:10px;box-shadow:0 6px 20px rgba(0,0,0,.2);z-index:9999;animation:slidein .3s ease-out;font-size:.9rem}
+.toast.success{background:var(--green)}.toast.error{background:var(--red)}
 @keyframes slidein{from{transform:translateX(400px);opacity:0}to{transform:translateX(0);opacity:1}}
-/* ── MODAL ─────────────────────────────── */
 .modal-bg{position:fixed;inset:0;background:rgba(0,0,0,.5);display:flex;align-items:center;justify-content:center;z-index:1000;padding:1rem}
 .modal{background:#fff;border-radius:14px;max-width:600px;width:100%;max-height:90vh;overflow-y:auto;box-shadow:0 20px 50px rgba(0,0,0,.3)}
 .modal-head{padding:1.2rem 1.5rem;border-bottom:1px solid var(--line);display:flex;align-items:center;justify-content:space-between}
@@ -115,301 +98,55 @@ input,select,textarea{font-family:inherit;font-size:14px}
 .modal-body{padding:1.5rem}
 .modal-close{font-size:1.6rem;color:var(--muted);cursor:pointer;padding:0 .4rem;line-height:1}
 .modal-close:hover{color:var(--red)}
-/* ── GAME MODAL ─────────────────────────────── */
-.game-modal-bg{position:fixed;inset:0;background:rgba(0,0,0,.75);display:flex;align-items:center;justify-content:center;z-index:2000;backdrop-filter:blur(4px)}
-.game-modal{position:relative;background:#fff;border-radius:14px;box-shadow:0 20px 60px rgba(0,0,0,.4);display:flex;flex-direction:column;overflow:hidden;width:90vw;height:85vh;max-width:1400px;min-width:320px;min-height:300px;transition:all .2s ease}
-.game-modal.maximized{width:100vw!important;height:100vh!important;max-width:none;border-radius:0;top:0!important;left:0!important;transform:none!important}
-.game-modal-head{background:var(--ink);color:#fff;padding:.7rem 1rem;display:flex;align-items:center;justify-content:space-between;cursor:move;user-select:none;flex-shrink:0}
-.game-modal-head h3{font-family:'DM Sans',sans-serif;font-weight:600;font-size:1rem;color:#fff;margin:0}
-.game-modal-controls{display:flex;gap:.4rem;align-items:center}
-.gm-btn{background:rgba(255,255,255,.12);color:#fff;border:none;width:32px;height:28px;border-radius:6px;cursor:pointer;font-size:.95rem;transition:background .15s;display:inline-flex;align-items:center;justify-content:center;padding:0}
-.gm-btn:hover{background:rgba(255,255,255,.25)}
-.gm-btn.close:hover{background:var(--red)}
-.game-modal-body{flex:1;overflow:hidden;position:relative;background:#f5f5f5}
-.game-modal-body iframe{width:100%;height:100%;border:none;display:block}
-.gm-resize{position:absolute;z-index:10}
-.gm-resize.n{top:-3px;left:10px;right:10px;height:6px;cursor:n-resize}
-.gm-resize.s{bottom:-3px;left:10px;right:10px;height:6px;cursor:s-resize}
-.gm-resize.e{top:10px;bottom:10px;right:-3px;width:6px;cursor:e-resize}
-.gm-resize.w{top:10px;bottom:10px;left:-3px;width:6px;cursor:w-resize}
-.gm-resize.ne{top:-3px;right:-3px;width:14px;height:14px;cursor:ne-resize}
-.gm-resize.nw{top:-3px;left:-3px;width:14px;height:14px;cursor:nw-resize}
-.gm-resize.se{bottom:-3px;right:-3px;width:14px;height:14px;cursor:se-resize}
-.gm-resize.sw{bottom:-3px;left:-3px;width:14px;height:14px;cursor:sw-resize}
-.gm-resize.se::after{content:'';position:absolute;right:3px;bottom:3px;width:8px;height:8px;border-right:2px solid var(--accent);border-bottom:2px solid var(--accent);border-bottom-right-radius:3px}
-.game-modal.maximized .gm-resize{display:none}
-@media(max-width:640px){.game-modal{width:100vw;height:100vh;border-radius:0}.gm-resize{display:none}}
-/* ── ENTREGAS TREE ─────────────────────────────── */
-.tree-grade,.tree-group,.tree-activity{margin:0 0 .8rem 0;border-radius:12px;overflow:hidden;background:#fff;box-shadow:0 2px 8px rgba(0,0,0,.04);border:1.5px solid var(--line)}
-.tree-grade>summary,.tree-group>summary,.tree-activity>summary{cursor:pointer;list-style:none;user-select:none;display:flex;align-items:center;gap:.7rem;padding:.9rem 1.1rem;font-weight:600;transition:background .15s}
-.tree-grade>summary::-webkit-details-marker,.tree-group>summary::-webkit-details-marker,.tree-activity>summary::-webkit-details-marker{display:none}
-.tree-grade>summary::before,.tree-group>summary::before,.tree-activity>summary::before{content:'▶';font-size:.7rem;color:var(--ink2);transition:transform .2s;flex-shrink:0;width:14px;display:inline-block}
-.tree-grade[open]>summary::before,.tree-group[open]>summary::before,.tree-activity[open]>summary::before{transform:rotate(90deg)}
-.tree-grade>summary{background:linear-gradient(135deg,#1e3c72,#2a5298);color:#fff;font-size:1.05rem;padding:1rem 1.2rem}
-.tree-grade>summary::before{color:rgba(255,255,255,.85)}
-.tree-grade>summary:hover{background:linear-gradient(135deg,#1a3460,#234a87)}
-.tree-grade-body{padding:.8rem .8rem 1rem .8rem;background:linear-gradient(180deg,#f0f4ff,#fafbff)}
-.tree-group>summary{background:linear-gradient(135deg,#fef3c7,#fde68a);color:#92400e;font-size:.97rem}
-.tree-group>summary:hover{background:linear-gradient(135deg,#fde68a,#fcd34d)}
-.tree-group-body{padding:.7rem .7rem .9rem .7rem;background:#fffdf6}
-.tree-activity{background:#fafafa;border-color:#e5e7eb}
-.tree-activity>summary{background:#fff;font-size:.92rem;padding:.7rem 1rem;color:var(--ink);border-bottom:1px solid transparent}
-.tree-activity[open]>summary{border-bottom-color:var(--line)}
-.tree-activity>summary:hover{background:#f5f5f5}
-.tree-activity-body{padding:.7rem;background:#fcfcfc}
-.tree-counter{margin-left:auto;background:rgba(255,255,255,.25);color:inherit;padding:3px 11px;border-radius:100px;font-size:.74rem;font-weight:700;display:inline-flex;align-items:center;gap:.3rem;flex-shrink:0}
-.tree-grade .tree-counter{background:rgba(255,255,255,.2);color:#fff}
-.tree-group .tree-counter{background:rgba(146,64,14,.15);color:#92400e}
-.tree-activity .tree-counter{background:#e0ecff;color:var(--accent2)}
-.tree-counter.late{background:#fee2e2;color:#991b1b}
-.tree-grade .tree-counter.late{background:rgba(239,68,68,.85);color:#fff}
-.tree-actions{display:flex;gap:.4rem;align-items:center;flex-shrink:0}
-.tree-actions button{padding:5px 10px;font-size:.74rem;border-radius:6px;font-weight:600;cursor:pointer;border:none}
-.sub-table{width:100%;border-collapse:collapse;font-size:.83rem;background:#fff;border-radius:8px;overflow:hidden}
-.sub-table th{background:#f1f5f9;color:var(--ink2);padding:8px 10px;text-align:left;font-size:.7rem;font-weight:700;text-transform:uppercase;letter-spacing:.04em;border-bottom:1px solid var(--line)}
-.sub-table td{padding:9px 10px;border-bottom:1px solid #f0f0f0;vertical-align:top}
-.sub-table .file-chip{display:inline-flex;align-items:center;gap:.3rem;padding:3px 8px;background:var(--soft);border-radius:6px;margin:1px 2px 1px 0;font-size:.75rem;cursor:pointer;transition:background .15s;border:1px solid var(--line)}
-.sub-table .file-chip:hover{background:#fff;border-color:var(--accent2)}
-.sub-table .file-chip .fname{max-width:130px;overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
-.sub-table .late-tag{display:inline-block;background:#fee2e2;color:#991b1b;padding:2px 7px;border-radius:5px;font-size:.7rem;font-weight:700;margin-left:.3rem}
-.sub-table .ontime-tag{display:inline-block;background:#d1fae5;color:#065f46;padding:2px 7px;border-radius:5px;font-size:.7rem;font-weight:700;margin-left:.3rem}
-.entregas-stats{display:grid;grid-template-columns:repeat(auto-fit,minmax(150px,1fr));gap:.8rem;margin-bottom:1rem}
-.entregas-stats .stat{padding:.9rem 1rem}
-.entregas-stats .stat .value{font-size:1.6rem}
-.tree-empty{text-align:center;padding:1.4rem;color:var(--muted);font-size:.85rem;background:#fff;border-radius:8px;border:1.5px dashed var(--line)}
-.entregas-search{display:flex;gap:.5rem;align-items:center;flex-wrap:wrap}
-.entregas-search input{flex:1;min-width:220px;padding:10px 14px;border:1.5px solid var(--line);border-radius:9px;background:var(--soft);outline:none;font-size:.9rem}
-.entregas-search input:focus{border-color:var(--accent2);background:#fff}
-/* ── GRADES TABLE ─────────────────────────────── */
-.grades-wrap{overflow-x:auto;background:#fff;border-radius:12px;box-shadow:0 2px 12px rgba(0,0,0,.05);margin-bottom:1.2rem}
-.grades-table{width:100%;border-collapse:collapse;min-width:600px}
-.grades-table th{background:var(--ink);color:#fff;padding:.85rem .6rem;text-align:left;font-weight:600;font-size:.8rem;text-transform:uppercase;letter-spacing:.03em}
-.grades-table th.num{text-align:center;writing-mode:vertical-rl;transform:rotate(180deg);font-size:.73rem;padding:.7rem .35rem;min-width:34px;max-width:38px}
-.grades-table th.final{background:var(--green);text-align:center;writing-mode:vertical-rl;transform:rotate(180deg)}
-.grades-table td{padding:.8rem .6rem;border-bottom:1px solid var(--line);font-size:.88rem}
-.grades-table td.num{text-align:center;font-weight:500}
-.grades-table td.final{text-align:center;font-weight:700;background:#f2fbf5}
-.grades-table .final-chip{display:inline-block;background:#d8f0df;color:var(--green);padding:4px 12px;border-radius:100px;font-weight:700}
-.grades-table .low{background:#ffeaea;color:var(--red)}
-/* ── STATS ─────────────────────────────── */
 .stats-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(180px,1fr));gap:1rem;margin-bottom:1.2rem}
 .stat{background:var(--card);border-radius:12px;padding:1.2rem;box-shadow:0 2px 10px rgba(0,0,0,.05);border-left:4px solid var(--accent2)}
-.stat.green{border-left-color:var(--green)}
-.stat.orange{border-left-color:var(--orange)}
-.stat.red{border-left-color:var(--red)}
+.stat.green{border-left-color:var(--green)}.stat.orange{border-left-color:var(--orange)}.stat.red{border-left-color:var(--red)}
 .stat .label{font-size:.75rem;color:var(--muted);text-transform:uppercase;font-weight:600;letter-spacing:.04em;margin-bottom:.3rem}
 .stat .value{font-size:1.9rem;font-weight:700;color:var(--ink);line-height:1.1}
-.stat .sub{font-size:.8rem;color:var(--muted);margin-top:.2rem}
-/* ── STUDENT DASHBOARD ─────────────────────────────── */
-.mat-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(260px,1fr));gap:1rem}
-.mat-card{background:#fff;border-radius:12px;padding:1.3rem;box-shadow:0 2px 12px rgba(0,0,0,.05);transition:all .25s;border:2px solid transparent;cursor:pointer}
-.mat-card:hover{transform:translateY(-3px);box-shadow:0 8px 22px rgba(0,0,0,.1);border-color:var(--accent)}
-.mat-card .m-icon{font-size:2.4rem;margin-bottom:.6rem}
-.mat-card h4{font-size:1.02rem;margin-bottom:.3rem;color:var(--ink);font-family:'DM Sans',sans-serif;font-weight:600}
-.mat-card .m-desc{font-size:.82rem;color:var(--muted);margin-bottom:.8rem;min-height:2.4em}
-.mat-card .m-type{display:inline-block;background:var(--soft);color:var(--ink2);padding:3px 10px;border-radius:100px;font-size:.72rem;font-weight:600}
-/* ── EXAM ─────────────────────────────── */
-.exam-q{background:var(--soft);border:1.5px solid var(--line);border-radius:11px;padding:1.2rem;margin-bottom:1rem}
-.exam-q h4{font-weight:600;margin-bottom:.8rem;color:var(--ink);font-family:'DM Sans',sans-serif;font-size:.98rem}
-.exam-opts{display:flex;flex-direction:column;gap:.5rem}
-.exam-opt{display:flex;align-items:center;gap:.7rem;padding:10px 14px;background:#fff;border:1.5px solid var(--line);border-radius:9px;cursor:pointer;transition:all .2s}
-.exam-opt:hover{border-color:var(--accent2)}
-.exam-opt.selected{border-color:var(--accent2);background:#e7f0fc}
-.exam-opt input[type=radio]{accent-color:var(--accent2)}
-.exam-opt.correct{border-color:var(--green);background:#d8f0df}
-.exam-opt.wrong{border-color:var(--red);background:#ffeaea}
-@media(max-width:640px){
-.form-row,.form-row.triple{grid-template-columns:1fr}
-.content{padding:1rem}
-.landing-header h1{font-size:2.2rem}
-.role-card{padding:2rem 1.4rem}
-.topbar{padding:.7rem 1rem}
-.topbar .brand{font-size:1.1rem}
-.tabs{padding:0 .8rem}
-}
-/* ═══════════ PARENT MODE ═══════════ */
-body.parent-mode{
-background:linear-gradient(135deg,#1e3c72 0%,#2a5298 25%,#7e22ce 50%,#2a5298 75%,#1e3c72 100%);
-background-size:400% 400%;
-animation:parentBgShift 18s ease infinite;
-}
-@keyframes parentBgShift{
-0%,100%{background-position:0% 50%}
-50%{background-position:100% 50%}
-}
-body.parent-mode .topbar{
-background:rgba(15,23,42,0.85);
-backdrop-filter:blur(10px);
-border-bottom:1px solid rgba(255,255,255,0.1);
-}
-body.parent-mode .tabs{
-background:rgba(255,255,255,0.95);
-backdrop-filter:blur(10px);
-border-bottom:1px solid rgba(255,255,255,0.2);
-}
-body.parent-mode .content{
-background:transparent;
-}
-body.parent-mode .panel{
-background:rgba(255,255,255,0.97);
-backdrop-filter:blur(10px);
-border:1px solid rgba(255,255,255,0.4);
-box-shadow:0 8px 32px rgba(15,23,42,0.18), 0 2px 8px rgba(0,0,0,0.04);
-animation:parentFadeIn .5s cubic-bezier(.2,.8,.2,1) backwards;
-transition:transform .25s ease, box-shadow .25s ease;
-}
-body.parent-mode .panel:hover{
-transform:translateY(-2px);
-box-shadow:0 12px 40px rgba(15,23,42,0.25), 0 4px 12px rgba(0,0,0,0.08);
-}
-body.parent-mode .panel:nth-child(1){animation-delay:0s}
-body.parent-mode .panel:nth-child(2){animation-delay:.08s}
-body.parent-mode .panel:nth-child(3){animation-delay:.16s}
-body.parent-mode .panel:nth-child(4){animation-delay:.24s}
-body.parent-mode .panel:nth-child(5){animation-delay:.32s}
-body.parent-mode .panel:nth-child(6){animation-delay:.4s}
-body.parent-mode .panel:nth-child(n+7){animation-delay:.48s}
-@keyframes parentFadeIn{
-from{opacity:0;transform:translateY(20px)}
-to{opacity:1;transform:translateY(0)}
-}
-.trim-chip{
-display:inline-flex;align-items:center;gap:.3rem;
-padding:4px 12px;border-radius:100px;
-font-size:.75rem;font-weight:700;
-text-transform:uppercase;letter-spacing:.04em;
-color:#fff;
-box-shadow:0 2px 8px rgba(0,0,0,0.15);
-vertical-align:middle;
-margin-left:.5rem;
-transition:transform .2s ease;
-}
-.trim-chip:hover{transform:scale(1.06)}
-.trim-chip.t1{background:linear-gradient(135deg,#3b82f6,#1e40af);box-shadow:0 2px 12px rgba(59,130,246,.4)}
-.trim-chip.t2{background:linear-gradient(135deg,#10b981,#047857);box-shadow:0 2px 12px rgba(16,185,129,.4)}
-.trim-chip.t3{background:linear-gradient(135deg,#f59e0b,#b45309);box-shadow:0 2px 12px rgba(245,158,11,.4)}
-.trim-chip.tx{background:linear-gradient(135deg,#64748b,#334155)}
-.subj-chip{
-display:inline-flex;align-items:center;gap:.3rem;
-padding:4px 12px;border-radius:100px;
-font-size:.72rem;font-weight:600;
-background:linear-gradient(135deg,#6366f1,#4338ca);
-color:#fff;
-vertical-align:middle;
-margin-left:.4rem;
-}
-.live-pill{
-display:inline-flex;align-items:center;gap:.4rem;
-padding:4px 11px;border-radius:100px;
-background:linear-gradient(135deg,#10b981,#047857);
-color:#fff;font-size:.7rem;font-weight:700;
-text-transform:uppercase;letter-spacing:.05em;
-box-shadow:0 0 0 0 rgba(16,185,129,0.6);
-animation:livePulse 2.4s ease-in-out infinite;
-}
-.live-pill .live-dot{
-width:7px;height:7px;border-radius:50%;
-background:#fff;
-animation:liveDotBlink 2.4s ease-in-out infinite;
-}
-@keyframes livePulse{
-0%,100%{box-shadow:0 0 0 0 rgba(16,185,129,0.5)}
-50%{box-shadow:0 0 0 8px rgba(16,185,129,0)}
-}
-@keyframes liveDotBlink{
-0%,100%{opacity:1;transform:scale(1)}
-50%{opacity:.6;transform:scale(.85)}
-}
-.flash-update{
-animation:flashGlow 1.2s ease-out;
-}
-@keyframes flashGlow{
-0%{box-shadow:0 0 0 3px rgba(16,185,129,0.6), 0 8px 32px rgba(15,23,42,0.18)}
-100%{box-shadow:0 0 0 0 rgba(16,185,129,0), 0 8px 32px rgba(15,23,42,0.18)}
-}
-body.parent-mode .grades-table th{
-background:linear-gradient(135deg,#1e293b,#334155);
-font-size:.74rem;
-}
-body.parent-mode .grades-table th .trim-chip{margin-left:0}
-body.parent-mode .grades-table th.final{
-background:linear-gradient(135deg,#10b981,#047857);
-}
-body.parent-mode .grades-table td.final{
-background:linear-gradient(180deg,#ecfdf5,#d1fae5);
-}
-body.parent-mode .grades-table .final-chip{
-background:linear-gradient(135deg,#10b981,#047857);
-color:#fff;
-box-shadow:0 2px 8px rgba(16,185,129,0.35);
-font-size:.95rem;padding:5px 14px;
-}
-body.parent-mode .grades-table td.num.low{
-background:#fee2e2;
-color:#991b1b;
-font-weight:700;
-}
-body.parent-mode .stat{
-background:rgba(255,255,255,0.97);
-backdrop-filter:blur(10px);
-border:none;
-box-shadow:0 6px 20px rgba(15,23,42,0.12);
-transition:transform .25s ease;
-}
-body.parent-mode .stat:hover{transform:translateY(-3px) scale(1.02)}
-body.parent-mode .stat .value{
-background:linear-gradient(135deg,#3b82f6,#7e22ce);
--webkit-background-clip:text;
-background-clip:text;
--webkit-text-fill-color:transparent;
-}
-body.parent-mode .stat.green .value{background:linear-gradient(135deg,#10b981,#047857);-webkit-background-clip:text;background-clip:text;-webkit-text-fill-color:transparent}
-body.parent-mode .stat.orange .value{background:linear-gradient(135deg,#f59e0b,#b45309);-webkit-background-clip:text;background-clip:text;-webkit-text-fill-color:transparent}
-body.parent-mode .stat.red .value{background:linear-gradient(135deg,#ef4444,#991b1b);-webkit-background-clip:text;background-clip:text;-webkit-text-fill-color:transparent}
-body.parent-mode .panel h3{
-font-size:1.08rem;
-}
-body.parent-mode .tab.active{
-background:linear-gradient(180deg,transparent 60%,rgba(59,130,246,0.08) 100%);
-}
+.grades-wrap{overflow-x:auto;background:#fff;border-radius:12px;box-shadow:0 2px 12px rgba(0,0,0,.05);margin-bottom:1.2rem}
+.grades-table{width:100%;border-collapse:collapse;min-width:600px}
+.grades-table th{background:var(--ink);color:#fff;padding:.85rem .6rem;text-align:left;font-weight:600;font-size:.8rem}
+.grades-table td{padding:.8rem .6rem;border-bottom:1px solid var(--line);font-size:.88rem}
+@media(max-width:640px){.form-row,.form-row.triple{grid-template-columns:1fr}.content{padding:1rem}.landing-header h1{font-size:2.2rem}}
+body.parent-mode{background:linear-gradient(135deg,#1e3c72,#2a5298,#7e22ce,#2a5298,#1e3c72);background-size:400% 400%;animation:parentBgShift 18s ease infinite}
+@keyframes parentBgShift{0%,100%{background-position:0% 50%}50%{background-position:100% 50%}}
+body.parent-mode .topbar{background:rgba(15,23,42,0.85);backdrop-filter:blur(10px)}
+body.parent-mode .panel{background:rgba(255,255,255,0.97);backdrop-filter:blur(10px);border:1px solid rgba(255,255,255,0.4)}
+.live-pill{display:inline-flex;align-items:center;gap:.4rem;padding:4px 11px;border-radius:100px;background:linear-gradient(135deg,#10b981,#047857);color:#fff;font-size:.7rem;font-weight:700}
+.live-pill .live-dot{width:7px;height:7px;border-radius:50%;background:#fff;animation:liveDotBlink 2.4s ease-in-out infinite}
+@keyframes liveDotBlink{0%,100%{opacity:1}50%{opacity:.6}}
 </style>
 </head>
 <body>
-<!-- ═══════════════════ LANDING ═══════════════════ -->
+
 <div id="landing" class="landing">
 <div class="landing-header">
 <h1>Portal Escolar de Matemáticas</h1>
 <p>Acceso para maestros, alumnos y padres de familia</p>
-<div id="landingConn" class="conn-dot connecting" style="margin-top:1rem;background:rgba(0,0,0,.06);color:var(--ink2)"><span class="dot"></span><span id="landingConnLabel">Conectando…</span></div>
+<div id="landingConn" class="conn-dot connecting"><span class="dot"></span><span id="landingConnLabel">Conectando…</span></div>
 </div>
 <div class="cards">
 <div class="role-card">
-<div class="icon">👨‍🏫</div>
-<h2>Maestro</h2>
-<p>Administra materiales, exámenes y calificaciones</p>
+<div class="icon">👨‍🏫</div><h2>Maestro</h2><p>Administra materiales, exámenes y calificaciones</p>
 <div class="form-area">
-<input type="text" id="tUser" placeholder="Usuario" autocomplete="off">
+<input type="text" id="tUser" placeholder="Usuario">
 <input type="password" id="tPass" placeholder="Contraseña">
 <button class="btn-enter" onclick="loginTeacher()">Ingresar</button>
 <div class="err" id="tErr"></div>
 </div>
 </div>
 <div class="role-card">
-<div class="icon">🎒</div>
-<h2>Alumno</h2>
-<p>Consulta materiales y contesta exámenes</p>
+<div class="icon">🎒</div><h2>Alumno</h2><p>Consulta materiales y contesta exámenes</p>
 <div class="form-area">
-<input type="text" id="sCode" placeholder="Tu código" autocomplete="off">
+<input type="text" id="sCode" placeholder="Tu código">
 <button class="btn-enter" onclick="loginStudent()">Entrar</button>
 <div class="err" id="sErr"></div>
 </div>
 </div>
 <div class="role-card">
-<div class="icon">👪</div>
-<h2>Padre de familia</h2>
-<p>Consulta el avance académico de tu hijo</p>
+<div class="icon">👪</div><h2>Padre de familia</h2><p>Consulta el avance académico de tu hijo</p>
 <div class="form-area">
-<input type="text" id="pCode" placeholder="Código de tu hijo" autocomplete="off">
+<input type="text" id="pCode" placeholder="Código de tu hijo">
 <button class="btn-enter" onclick="loginParent()">Entrar</button>
 <div class="err" id="pErr"></div>
 </div>
@@ -417,7 +154,6 @@ background:linear-gradient(180deg,transparent 60%,rgba(59,130,246,0.08) 100%);
 </div>
 </div>
 
-<!-- ═══════════════════ APP SHELL ═══════════════════ -->
 <div id="app" class="app hidden">
 <div class="topbar">
 <div class="brand"><span id="brandIcon">📚</span><span id="brandText">Portal Escolar de Matemáticas</span></div>
@@ -434,538 +170,431 @@ background:linear-gradient(180deg,transparent 60%,rgba(59,130,246,0.08) 100%);
 <div id="toastHolder"></div>
 
 <script>
-/* ═══════════════════════════════════════════════════════════
-PORTAL ESCOLAR DE MATEMÁTICAS
-Complementa el Registro de Calificaciones del maestro.
-Datos del portal: localStorage 'portal_v1'
-Datos del registro (importados): dentro de portal.calif
-═══════════════════════════════════════════════════════════ */
 const STORE_KEY = 'portal_v1';
 const TEACHER_USER = 'admin';
 const TEACHER_PASS = '182136';
 
-// ── State ─────────────────────────────────────
 let portal = {
-materials: [],
-exams: [],
-calif: null,
-examResults: [],
-registroAlumnos: [],
-activities: [],
-submissions: []
+  materials: [], exams: [], calif: null, examResults: [],
+  registroAlumnos: [], activities: [], submissions: []
 };
 let session = null;
+let teacherTab = 'calif', studentTab = 'materials', parentTab = 'grades';
 
-function _persistLocal(){
-try{
-const cached = {...portal};
-if(session && session.role==='teacher'){
-cached.submissions = [];
-} else if(session && session.role==='student'){
-cached.submissions = (portal.submissions||[]).filter(s=> _normCode(s.studentCode)===_normCode(session.code));
-}
-localStorage.setItem(STORE_KEY, JSON.stringify(cached));
-}catch(e){
-try{
-const minimal = {...portal, submissions: []};
-localStorage.setItem(STORE_KEY, JSON.stringify(minimal));
-}catch(e2){ console.error('localStorage failed completely',e2); }
-}
+// ── PERSISTENCIA LOCAL ─────────────────────────────────────
+function loadStore(){
+  try{
+    const raw = localStorage.getItem(STORE_KEY);
+    if(raw){
+      const p = JSON.parse(raw);
+      Object.keys(p).forEach(k => { if(Array.isArray(p[k]) || p[k]===null) portal[k] = p[k]; });
+    }
+  }catch(e){ console.warn('localStorage load error', e); }
 }
 function saveStore(){
-_persistLocal();
-syncToFirebase();
-}
-function loadStore(){
-try{
-const raw = localStorage.getItem(STORE_KEY);
-if(raw){
-const p = JSON.parse(raw);
-portal = {...portal, ...p};
-['materials','exams','examResults','registroAlumnos','activities','submissions'].forEach(k=>{ if(!portal[k]) portal[k] = []; });
-}
-}catch(e){}
+  try{ localStorage.setItem(STORE_KEY, JSON.stringify(portal)); }catch(e){}
+  syncToFirebase();
 }
 loadStore();
 
-/* ═══════════════════════════════════════════
-FIREBASE SYNC - CONFIGURACIÓN ACTUALIZADA
-═══════════════════════════════════════════ */
-// 🔥 Tu configuración Firebase integrada
+// ── FIREBASE CONFIG (TU CONFIGURACIÓN INTEGRADA) ───────────
 const firebaseConfig = {
-apiKey: "AIzaSyDpwhVBroBxbYCqnGMCL_ckFJgRBAalNVQ",
-authDomain: "portal-escolar-matematicas.firebaseapp.com",
-databaseURL: "https://portal-escolar-matematicas-default-rtdb.firebaseio.com",
-projectId: "portal-escolar-matematicas",
-storageBucket: "portal-escolar-matematicas.firebasestorage.app",
-messagingSenderId: "524937383811",
-appId: "1:524937383811:web:dd667dfb6987e2cea7b0b6",
-measurementId: "G-REVHGQLT8Q"
+  apiKey: "AIzaSyDpwhVBroBxbYCqnGMCL_ckFJgRBAalNVQ",
+  authDomain: "portal-escolar-matematicas.firebaseapp.com",
+  databaseURL: "https://portal-escolar-matematicas-default-rtdb.firebaseio.com",
+  projectId: "portal-escolar-matematicas",
+  storageBucket: "portal-escolar-matematicas.firebasestorage.app",
+  messagingSenderId: "524937383811",
+  appId: "1:524937383811:web:dd667dfb6987e2cea7b0b6",
+  measurementId: "G-REVHGQLT8Q"
 };
 
 let fbApp=null, fbDb=null, fbConnected=false, fbReady=false;
 let syncTimer=null, suppressSync=false;
 
 function setConnState(state, label){
-['connDot','landingConn'].forEach(id=>{
-const el = document.getElementById(id);
-if(!el) return;
-el.classList.remove('online','offline','connecting');
-el.classList.add(state);
-});
-['connLabel','landingConnLabel'].forEach(id=>{
-const el = document.getElementById(id);
-if(el) el.textContent = label;
-});
+  ['connDot','landingConn'].forEach(id=>{
+    const el = document.getElementById(id);
+    if(el){ el.classList.remove('online','offline','connecting'); el.classList.add(state); }
+  });
+  ['connLabel','landingConnLabel'].forEach(id=>{
+    const el = document.getElementById(id);
+    if(el) el.textContent = label;
+  });
 }
 
+// Cargar SDK de Firebase con fallbacks
 function loadFirebaseSDK(){
-return new Promise((resolve, reject) => {
-if(typeof firebase !== 'undefined' && firebase.database){ resolve(); return; }
-const cdns = [
-'https://cdnjs.cloudflare.com/ajax/libs/firebase/12.3.0/',
-'https://www.gstatic.com/firebasejs/11.10.0/',
-'https://www.gstatic.com/firebasejs/10.14.1/'
-];
-let idx = 0;
-function tryNext(){
-if(idx >= cdns.length){ reject(new Error('Todos los CDNs fallaron')); return; }
-const base = cdns[idx++];
-const s1 = document.createElement('script');
-s1.src = base + 'firebase-app-compat.js';
-s1.onload = () => {
-const s2 = document.createElement('script');
-s2.src = base + 'firebase-database-compat.js';
-s2.onload = () => {
-if(typeof firebase !== 'undefined' && firebase.database) resolve();
-else tryNext();
-};
-s2.onerror = tryNext;
-document.head.appendChild(s2);
-};
-s1.onerror = tryNext;
-document.head.appendChild(s1);
-}
-tryNext();
-});
+  return new Promise((resolve, reject) => {
+    if(typeof firebase !== 'undefined' && firebase.database){ resolve(); return; }
+    const cdns = [
+      'https://cdnjs.cloudflare.com/ajax/libs/firebase/12.3.0/',
+      'https://www.gstatic.com/firebasejs/11.10.0/',
+      'https://www.gstatic.com/firebasejs/10.14.1/'
+    ];
+    let idx = 0;
+    function tryNext(){
+      if(idx >= cdns.length){ reject(new Error('CDNs fallaron')); return; }
+      const base = cdns[idx++];
+      const s1 = document.createElement('script');
+      s1.src = base + 'firebase-app-compat.js';
+      s1.onload = () => {
+        const s2 = document.createElement('script');
+        s2.src = base + 'firebase-database-compat.js';
+        s2.onload = () => {
+          if(typeof firebase !== 'undefined' && firebase.database) resolve();
+          else tryNext();
+        };
+        s2.onerror = tryNext;
+        document.head.appendChild(s2);
+      };
+      s1.onerror = tryNext;
+      document.head.appendChild(s1);
+    }
+    tryNext();
+  });
 }
 
 function initFirebase(){
-setConnState('connecting', 'Cargando Firebase…');
-loadFirebaseSDK().then(() => {
-try{
-fbApp = firebase.initializeApp(firebaseConfig);
-fbDb = firebase.database();
-fbReady = true;
-fbDb.ref('.info/connected').on('value', snap=>{
-fbConnected = !!snap.val();
-if(fbConnected){ setConnState('online','En línea'); subscribeFirebase(); }
-else { setConnState('offline','Sin conexión'); }
-});
-}catch(err){ setConnState('offline','Error: '+err.message); }
-}).catch(err => setConnState('offline','SDK no disponible'));
+  setConnState('connecting', 'Cargando Firebase…');
+  loadFirebaseSDK().then(() => {
+    try{
+      fbApp = firebase.initializeApp(firebaseConfig);
+      fbDb = firebase.database();
+      fbReady = true;
+      fbDb.ref('.info/connected').on('value', snap => {
+        fbConnected = !!snap.val();
+        if(fbConnected){ setConnState('online','En línea'); subscribeFirebase(); }
+        else { setConnState('offline','Sin conexión'); }
+      });
+    }catch(err){ setConnState('offline','Error: '+err.message); }
+  }).catch(err => setConnState('offline','SDK no disponible'));
 }
 
 function subscribeFirebase(){
-if(!fbReady) return;
+  if(!fbReady) return;
+  
+  // 📦 Datos del portal
+  fbDb.ref('portal/data').on('value', snap => {
+    const v = snap.val();
+    if(v){
+      suppressSync = true;
+      portal.materials = v.materials || [];
+      portal.exams = v.exams || [];
+      portal.registroAlumnos = v.registroAlumnos || [];
+      portal.activities = v.activities || [];
+      if(v.calif && !portal._califFromRegistro) portal.calif = v.calif;
+      saveStore(); suppressSync = false;
+      if(session) renderCurrentContent();
+    }
+  });
 
-// 📦 Datos del portal
-fbDb.ref('portal/data').on('value', snap=>{
-const v = snap.val();
-if(v){
-suppressSync = true;
-portal.materials = v.materials || [];
-portal.exams = v.exams || [];
-portal.registroAlumnos = v.registroAlumnos || [];
-portal.activities = v.activities || [];
-if(v.calif && !portal._califFromRegistro) portal.calif = v.calif;
-_persistLocal(); suppressSync = false;
-if(session){
-if(session.role==='teacher') renderTeacherContent();
-else if(session.role==='student') renderStudentContent();
-else if(session.role==='parent') renderParentContent();
-}
-}
-});
+  // 📊 Calificaciones en tiempo real
+  fbDb.ref('calificaciones/data').on('value', snap => {
+    const v = snap.val();
+    if(v && v.groups && Array.isArray(v.groups)){
+      suppressSync = true;
+      portal.calif = { groups: v.groups, importedAt: new Date().toISOString(), _liveSync: true };
+      portal._califFromRegistro = true;
+      saveStore(); suppressSync = false;
+      if(session && (session.role==='parent' || session.role==='student')){
+        renderCurrentContent();
+        toast('📊 Datos actualizados','success');
+      }
+    }
+  });
 
-// 📊 Calificaciones desde Registro
-fbDb.ref('calificaciones/data').on('value', snap=>{
-const v = snap.val();
-if(v && v.groups && Array.isArray(v.groups)){
-const isFirstLoad = !portal.calif;
-suppressSync = true;
-portal.calif = { groups: v.groups, importedAt: new Date().toISOString(), _liveSync: true };
-portal._califFromRegistro = true;
-_persistLocal(); suppressSync = false;
-if(session){
-if(session.role==='parent' || session.role==='student'){
-renderCurrentContent();
-if(!isFirstLoad) flashUpdate();
-} else if(session.role==='teacher') renderTeacherContent();
-}
-}
-});
+  // 📝 Resultados de exámenes
+  fbDb.ref('portal/results').on('value', snap => {
+    const v = snap.val();
+    suppressSync = true;
+    portal.examResults = v ? Object.values(v) : [];
+    saveStore(); suppressSync = false;
+    if(session && (session.role==='teacher' || session.role==='student')) renderCurrentContent();
+  });
 
-// 📝 Resultados de exámenes
-fbDb.ref('portal/results').on('value', snap=>{
-const v = snap.val();
-suppressSync = true;
-portal.examResults = v ? Object.values(v) : [];
-_persistLocal(); suppressSync = false;
-if(session){
-if(session.role==='teacher') renderTeacherContent();
-if(session.role==='student') renderStudentContent();
-}
-});
-
-// 📥 Entregas
-fbDb.ref('portal/submissions').on('value', snap=>{
-const v = snap.val();
-const prevCount = (portal.submissions||[]).length;
-suppressSync = true;
-portal.submissions = v ? Object.values(v) : [];
-_persistLocal(); suppressSync = false;
-if(session){
-if(session.role==='teacher') renderTeacherContent();
-else if(session.role==='student') renderStudentContent();
-if(portal.submissions.length > prevCount && prevCount>0) toast('📥 Nueva entrega recibida','success');
-}
-});
+  // 📥 Entregas
+  fbDb.ref('portal/submissions').on('value', snap => {
+    const v = snap.val();
+    suppressSync = true;
+    portal.submissions = v ? Object.values(v) : [];
+    saveStore(); suppressSync = false;
+    if(session) renderCurrentContent();
+  });
 }
 
 function syncToFirebase(immediate){
-if(!fbReady || !fbConnected || suppressSync || !session || session.role!=='teacher') return;
-clearTimeout(syncTimer);
-const doSync = ()=>{
-fbDb.ref('portal/data').set({
-materials: portal.materials || [],
-exams: portal.exams || [],
-calif: portal.calif || null,
-registroAlumnos: portal.registroAlumnos || [],
-activities: portal.activities || [],
-updatedAt: Date.now()
-}).catch(err=>toast('Error al sincronizar','error'));
-};
-if(immediate) doSync();
-else syncTimer = setTimeout(doSync, 800);
+  if(!fbReady || !fbConnected || suppressSync || !session || session.role!=='teacher') return;
+  clearTimeout(syncTimer);
+  const doSync = () => {
+    fbDb.ref('portal/data').set({
+      materials: portal.materials, exams: portal.exams, calif: portal.calif,
+      registroAlumnos: portal.registroAlumnos, activities: portal.activities,
+      updatedAt: Date.now()
+    }).catch(err => console.error('Sync error', err));
+  };
+  if(immediate) doSync();
+  else syncTimer = setTimeout(doSync, 800);
 }
 
 function pushExamResult(result){
-if(fbReady && fbConnected) fbDb.ref('portal/results').push(result).catch(()=>{});
+  if(fbReady && fbConnected) fbDb.ref('portal/results').push(result).catch(()=>{});
 }
 function pushSubmissionFB(submission){
-return new Promise((resolve, reject)=>{
-if(!fbReady || !fbConnected) { resolve(null); return; }
-const safeCode = String(submission.studentCode||'').replace(/[^a-zA-Z0-9_-]/g,'_');
-const key = submission.activityId + '__' + safeCode;
-fbDb.ref('portal/submissions/' + key).set(submission).then(()=>resolve(key)).catch(reject);
-});
+  if(!fbReady || !fbConnected) return Promise.resolve();
+  const safeCode = String(submission.studentCode||'').replace(/[^a-zA-Z0-9_-]/g,'_');
+  const key = submission.activityId + '__' + safeCode;
+  return fbDb.ref('portal/submissions/' + key).set(submission);
 }
 function deleteSubmissionFB(activityId, studentCode){
-if(!fbReady || !fbConnected) return Promise.resolve();
-const safeCode = String(studentCode||'').replace(/[^a-zA-Z0-9_-]/g,'_');
-return fbDb.ref('portal/submissions/' + activityId + '__' + safeCode).remove();
-}
-function forcePublish(){
-if(!fbReady || !fbConnected){ toast('Firebase no disponible','error'); return; }
-fbDb.ref('portal/data').set({
-materials: portal.materials, exams: portal.exams, calif: portal.calif,
-registroAlumnos: portal.registroAlumnos, activities: portal.activities,
-updatedAt: Date.now()
-}).then(()=>toast('Publicado a Firebase ✓','success')).catch(e=>toast('Error: '+e.message,'error'));
+  if(!fbReady || !fbConnected) return Promise.resolve();
+  const safeCode = String(studentCode||'').replace(/[^a-zA-Z0-9_-]/g,'_');
+  return fbDb.ref('portal/submissions/' + activityId + '__' + safeCode).remove();
 }
 
 initFirebase();
 
-// ── Utils ─────────────────────────────────────
+// ── UTILS ─────────────────────────────────────
 function uid(){ return Date.now().toString(36)+Math.random().toString(36).slice(2,8); }
-function escHtml(s){ return String(s||'').replace(/[&<>"']/g, m=>({ '&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[m])); }
+function esc(s){ return String(s||'').replace(/[&<>"']/g, m=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[m])); }
 function toast(msg, type='success'){
-const h = document.getElementById('toastHolder'), t = document.createElement('div');
-t.className = 'toast '+type; t.textContent = msg; h.appendChild(t);
-setTimeout(()=>{ t.style.transition='opacity .3s'; t.style.opacity='0'; setTimeout(()=>t.remove(),300); }, 2600);
+  const h = document.getElementById('toastHolder'), t = document.createElement('div');
+  t.className = 'toast '+type; t.textContent = msg; h.appendChild(t);
+  setTimeout(()=>{ t.style.opacity='0'; setTimeout(()=>t.remove(),300); }, 2500);
 }
-function openModal(html){ document.getElementById('modalHolder').innerHTML=`<div class="modal-bg" onclick="if(event.target===this)closeModal()"><div class="modal">${html}</div></div>`; }
-function closeModal(){ document.getElementById('modalHolder').innerHTML=''; }
+function openModal(html){ document.getElementById('modalHolder').innerHTML = '<div class="modal-bg" onclick="if(event.target===this)closeModal()"><div class="modal">'+html+'</div></div>'; }
+function closeModal(){ document.getElementById('modalHolder').innerHTML = ''; }
 function _normCode(s){ return String(s||'').trim().toUpperCase().replace(/\s+/g,''); }
-function gradoLabel(g){ return String(g)==='1'?'1°':String(g)==='2'?'2°':String(g)==='3'?'3°':'—'; }
-function grupoLabel(g){ return g ? g.toUpperCase() : '—'; }
-function fileToBase64(f){ return new Promise((res,rej)=>{ const r=new FileReader(); r.onload=()=>res(r.result); r.onerror=rej; r.readAsDataURL(f); }); }
+function gradoLabel(g){ return g==='1'?'1°':g==='2'?'2°':g==='3'?'3°':'—'; }
+function fileToBase64(f){ return new Promise((r,e)=>{ const o=new FileReader(); o.onload=()=>r(o.result); o.onerror=e; o.readAsDataURL(f); }); }
 
 // ── LOGIN ─────────────────────────────────────
 function loginTeacher(){
-const u=document.getElementById('tUser').value.trim(), p=document.getElementById('tPass').value;
-if(u===TEACHER_USER && p===TEACHER_PASS){ session={role:'teacher',label:'Maestro'}; showApp(); }
-else document.getElementById('tErr').textContent='Credenciales incorrectas';
+  const u = document.getElementById('tUser').value.trim(), p = document.getElementById('tPass').value;
+  if(u===TEACHER_USER && p===TEACHER_PASS){ session={role:'teacher',label:'Maestro'}; showApp(); }
+  else document.getElementById('tErr').textContent = 'Credenciales incorrectas';
 }
 function findStudentByCode(code){
-if(!portal.calif || !portal.calif.groups) return null;
-const target = _normCode(code);
-for(const g of portal.calif.groups){
-if(!g.students) continue;
-for(const s of g.students){
-if(s.qrCode && _normCode(s.qrCode) === target) return { student:s, group:g };
-}
-}
-return null;
+  if(!portal.calif || !portal.calif.groups) return null;
+  const target = _normCode(code);
+  for(const g of portal.calif.groups){
+    if(!g.students) continue;
+    for(const s of g.students){
+      if(s.qrCode && _normCode(s.qrCode)===target) return {student:s, group:g};
+    }
+  }
+  return null;
 }
 function loginStudent(){
-const code = document.getElementById('sCode').value.trim();
-if(!code){ document.getElementById('sErr').textContent = 'Escribe tu código'; return; }
-if(!portal.calif || !portal.calif.groups){ document.getElementById('sErr').textContent = 'El maestro aún no ha cargado datos'; return; }
-const match = findStudentByCode(code);
-if(!match){ document.getElementById('sErr').textContent = `Código "${code}" no encontrado.`; return; }
-let grado = String(match.group.grado||''), grupo = match.group.name.match(/[A-F]/i)?.[0]?.toUpperCase()||'';
-session = { role:'student', code, label:match.student.name, grado, grupo, studentId:match.student.id };
-showApp();
+  const code = document.getElementById('sCode').value.trim();
+  if(!code){ document.getElementById('sErr').textContent='Escribe tu código'; return; }
+  if(!portal.calif || !portal.calif.groups){ document.getElementById('sErr').textContent='El maestro aún no ha cargado datos'; return; }
+  const match = findStudentByCode(code);
+  if(!match){ document.getElementById('sErr').textContent='Código no encontrado'; return; }
+  let grado = String(match.group.grado||''), grupo = match.group.name.match(/[A-F]/i)?.[0]?.toUpperCase()||'';
+  session = {role:'student', code, label:match.student.name, grado, grupo, studentId:match.student.id};
+  showApp();
 }
 function loginParent(){
-const code = document.getElementById('pCode').value.trim();
-if(!code){ document.getElementById('pErr').textContent = 'Escribe el código de tu hijo'; return; }
-if(!portal.calif || !portal.calif.groups){ document.getElementById('pErr').textContent = 'El maestro aún no ha cargado datos'; return; }
-const match = findStudentByCode(code);
-if(!match){ document.getElementById('pErr').textContent = `Código "${code}" no encontrado.`; return; }
-let grado = String(match.group.grado||''), grupo = match.group.name.match(/[A-F]/i)?.[0]?.toUpperCase()||'';
-session = { role:'parent', code, label:'Padre de '+match.student.name, studentName:match.student.name, studentId:match.student.id, grado, grupo };
-showApp();
+  const code = document.getElementById('pCode').value.trim();
+  if(!code){ document.getElementById('pErr').textContent='Escribe el código de tu hijo'; return; }
+  if(!portal.calif || !portal.calif.groups){ document.getElementById('pErr').textContent='El maestro aún no ha cargado datos'; return; }
+  const match = findStudentByCode(code);
+  if(!match){ document.getElementById('pErr').textContent='Código no encontrado'; return; }
+  let grado = String(match.group.grado||''), grupo = match.group.name.match(/[A-F]/i)?.[0]?.toUpperCase()||'';
+  session = {role:'parent', code, label:'Padre de '+match.student.name, studentName:match.student.name, studentId:match.student.id, grado, grupo};
+  showApp();
 }
 function logout(){
-session=null; document.body.classList.remove('parent-mode');
-document.getElementById('app').classList.add('hidden'); document.getElementById('landing').classList.remove('hidden');
-['tUser','tPass','sCode','pCode'].forEach(id=>{ const e=document.getElementById(id); if(e) e.value=''; });
+  session=null; document.body.classList.remove('parent-mode');
+  document.getElementById('app').classList.add('hidden'); document.getElementById('landing').classList.remove('hidden');
+  ['tUser','tPass','sCode','pCode'].forEach(id=>{const e=document.getElementById(id); if(e)e.value='';});
 }
 function showApp(){
-document.getElementById('landing').classList.add('hidden'); document.getElementById('app').classList.remove('hidden');
-document.body.classList.toggle('parent-mode', session.role==='parent');
-document.getElementById('userLabel').textContent = session.label;
-if(session.role==='teacher'){
-document.getElementById('brandIcon').textContent='👨‍🏫'; document.getElementById('brandText').textContent='Panel del Maestro';
-renderTeacherTabs();
-} else if(session.role==='student'){
-document.getElementById('brandIcon').textContent='🎒'; document.getElementById('brandText').textContent='Mi aula';
-renderStudentTabs();
-} else {
-document.getElementById('brandIcon').textContent='👪'; document.getElementById('brandText').textContent='Portal Padres';
-renderParentTabs();
-}
+  document.getElementById('landing').classList.add('hidden'); document.getElementById('app').classList.remove('hidden');
+  document.body.classList.toggle('parent-mode', session.role==='parent');
+  document.getElementById('userLabel').textContent = session.label;
+  if(session.role==='teacher'){ document.getElementById('brandIcon').textContent='👨‍🏫'; document.getElementById('brandText').textContent='Panel del Maestro'; renderTeacherTabs(); }
+  else if(session.role==='student'){ document.getElementById('brandIcon').textContent='🎒'; document.getElementById('brandText').textContent='Mi aula'; renderStudentTabs(); }
+  else { document.getElementById('brandIcon').textContent='👪'; document.getElementById('brandText').textContent='Portal Padres'; renderParentTabs(); }
 }
 
-/* ═══════════════════════════════════════════
-TEACHER AREA
-═══════════════════════════════════════════ */
-let teacherTab='calif', alumnoGradoFiltro='todos', alumnoGrupoFiltro='todos';
-function setAlumnoGradoFiltro(v){ alumnoGradoFiltro=v; renderTeacherContent(); }
-function setAlumnoGrupoFiltro(v){ alumnoGrupoFiltro=v; renderTeacherContent(); }
+// ── NAV ─────────────────────────────────────
 function renderTeacherTabs(){
-const tabs=[
-{id:'calif',label:'📊 Calificaciones'},
-{id:'alumnos',label:'👥 Registro de Alumnos'},
-{id:'materials',label:'📁 Materiales'},
-{id:'activities',label:'📌 Actividades'},
-{id:'entregas',label:'📥 Entregas'},
-{id:'exams',label:'📝 Exámenes'},
-{id:'io',label:'💾 Importar/Exportar'}
-];
-document.getElementById('tabs').innerHTML=tabs.map(t=>`<button class="tab ${teacherTab===t.id?'active':''}" onclick="setTeacherTab('${t.id}')">${t.label}</button>`).join('');
-renderTeacherContent();
+  const tabs = ['calif','alumnos','materials','activities','entregas','exams','io'].map(t=>({id:t,label:{calif:'📊 Calificaciones',alumnos:'👥 Alumnos',materials:'📁 Materiales',activities:'📌 Actividades',entregas:'📥 Entregas',exams:'📝 Exámenes',io:'💾 Datos'}[t]}));
+  document.getElementById('tabs').innerHTML = tabs.map(t=>`<button class="tab ${teacherTab===t.id?'active':''}" onclick="switchTeacherTab('${t.id}')">${t.label}</button>`).join('');
+  renderTeacherContent();
 }
-function setTeacherTab(id){ teacherTab=id; renderTeacherTabs(); }
+function switchTeacherTab(id){ teacherTab=id; renderTeacherTabs(); }
 function renderTeacherContent(){
-const c=document.getElementById('content');
-const views={calif:viewCalif,alumnos:viewAlumnos,materials:viewMaterials,activities:viewActivities,entregas:viewEntregas,exams:viewExams,io:viewIO};
-c.innerHTML=views[teacherTab]();
+  const c=document.getElementById('content');
+  if(teacherTab==='calif') c.innerHTML=viewCalif();
+  else if(teacherTab==='alumnos') c.innerHTML=viewAlumnos();
+  else if(teacherTab==='materials') c.innerHTML=viewMaterials();
+  else if(teacherTab==='activities') c.innerHTML=viewActivities();
+  else if(teacherTab==='entregas') c.innerHTML=viewEntregas();
+  else if(teacherTab==='exams') c.innerHTML=viewExams();
+  else if(teacherTab==='io') c.innerHTML=viewIO();
+}
+function renderStudentTabs(){
+  const tabs = [{id:'materials',label:'📁 Materiales'},{id:'activities',label:'📌 Tareas'},{id:'exams',label:'📋 Exámenes'}];
+  document.getElementById('tabs').innerHTML = tabs.map(t=>`<button class="tab ${studentTab===t.id?'active':''}" onclick="switchStudentTab('${t.id}')">${t.label}</button>`).join('');
+  renderStudentContent();
+}
+function switchStudentTab(id){ studentTab=id; renderStudentTabs(); }
+function renderParentTabs(){
+  const tabs = [{id:'grades',label:'📋 Calificaciones'},{id:'tasks',label:'📝 Tareas'},{id:'conduct',label:'⚠️ Conducta'},{id:'summary',label:'🏆 Resumen'}];
+  document.getElementById('tabs').innerHTML = tabs.map(t=>`<button class="tab ${parentTab===t.id?'active':''}" onclick="switchParentTab('${t.id}')">${t.label}</button>`).join('');
+}
+function switchParentTab(id){ parentTab=id; renderParentTabs(); renderParentContent(); }
+function renderCurrentContent(){
+  if(!session) return;
+  if(session.role==='teacher') renderTeacherContent();
+  else if(session.role==='student') renderStudentContent();
+  else renderParentContent();
 }
 
+// ── TEACHER VIEWS (Simplified for brevity) ─────────────────
 function viewCalif(){
-const hasCalif = portal.calif && portal.calif.groups;
-let stats='';
-if(hasCalif){
-const nG=portal.calif.groups.length, nS=new Set();
-portal.calif.groups.forEach(g=>(g.students||[]).forEach(s=>nS.add(s.name)));
-const withCode=new Set();
-portal.calif.groups.forEach(g=>(g.students||[]).forEach(s=>{if(s.qrCode)withCode.add(s.name);}));
-stats=`<div class="stats-grid"><div class="stat"><div class="label">Grupos</div><div class="value">${nG}</div></div><div class="stat green"><div class="label">Alumnos únicos</div><div class="value">${nS.size}</div></div><div class="stat orange"><div class="label">Con código</div><div class="value">${withCode.size}</div></div></div>`;
-}
-const isLive=portal._califFromRegistro||(portal.calif&&portal.calif._liveSync);
-return `<div class="panel" style="background:linear-gradient(135deg,#eff6ff,#dbeafe);border:1.5px solid #3b82f6"><h3 style="color:#1e40af">⚡ Sincronización en tiempo real ${isLive?'<span class="live-pill" style="margin-left:.5rem"><span class="live-dot"></span>ACTIVA</span>':''}</h3>${isLive?'<p class="sub">Las calificaciones se sincronizan automáticamente entre tu Registro y el Portal.</p>':''}</div><div class="panel"><h3>📊 Vincular con Registro de Calificaciones</h3><input type="file" id="califFile" accept=".json" style="display:none" onchange="importCalif(event)"><div class="btn-row"><button class="btn btn-primary" onclick="document.getElementById('califFile').click()">📥 Importar JSON</button>${hasCalif?'<button class="btn btn-danger" onclick="clearCalif()">🗑️ Borrar</button>':''}</div></div>${stats}${!hasCalif?'<div class="empty"><div class="big">📊</div><p>Sin datos importados.</p></div>':''}`;
+  const has = portal.calif && portal.calif.groups;
+  return `<div class="panel"><h3>📊 Calificaciones</h3><p class="sub">Importa desde tu Registro de Calificaciones</p>
+  <input type="file" id="califFile" accept=".json" style="display:none" onchange="importCalif(event)">
+  <div class="btn-row"><button class="btn btn-primary" onclick="document.getElementById('califFile').click()">📥 Importar JSON</button>
+  ${has?'<button class="btn btn-danger" onclick="clearCalif()">🗑️ Borrar</button>':''}</div></div>
+  ${has?'<div class="stats-grid"><div class="stat"><div class="label">Grupos</div><div class="value">'+portal.calif.groups.length+'</div></div></div>':''}`;
 }
 function importCalif(e){
-const f=e.target.files[0]; if(!f)return;
-const r=new FileReader();
-r.onload=ev=>{try{
-const data=JSON.parse(ev.target.result), groups=data.groups||data.regCalif_v3?.groups;
-if(!groups||!Array.isArray(groups)){toast('Archivo inválido','error');return;}
-portal.calif={groups,importedAt:new Date().toISOString()}; saveStore(); syncToFirebase(true); renderTeacherContent(); toast('Importado ✓','success');
-}catch(err){toast('JSON inválido','error');}};
-r.readAsText(f); e.target.value='';
+  const f=e.target.files[0]; if(!f)return;
+  const r=new FileReader();
+  r.onload=ev=>{try{
+    const data=JSON.parse(ev.target.result), groups=data.groups||data.regCalif_v3?.groups;
+    if(!groups||!Array.isArray(groups)){toast('Archivo inválido','error');return;}
+    portal.calif={groups,importedAt:new Date().toISOString()}; saveStore(); syncToFirebase(true); renderTeacherContent(); toast('Importado ✓','success');
+  }catch(err){toast('JSON inválido','error');}};
+  r.readAsText(f); e.target.value='';
 }
-function clearCalif(){ if(!confirm('¿Borrar datos importados?'))return; portal.calif=null; saveStore(); renderTeacherContent(); }
+function clearCalif(){ if(!confirm('¿Borrar?'))return; portal.calif=null; saveStore(); renderTeacherContent(); }
 
 function viewAlumnos(){
-const has=portal.registroAlumnos.length>0;
-return `<div class="panel" style="background:linear-gradient(135deg,#f0fdf4,#dcfce7);border:1.5px solid #22c55e"><h3 style="color:#166534">👥 Registro de Alumnos</h3></div><div class="panel"><h3>📥 Importar JSON</h3><input type="file" id="alumnosFile" accept=".json" style="display:none" onchange="importAlumnosJSON(event)"><div class="btn-row"><button class="btn btn-primary" onclick="document.getElementById('alumnosFile').click()">📂 Cargar</button>${has?'<button class="btn btn-danger" onclick="clearAlumnos()">🗑️ Borrar</button>':''}</div></div>${has?renderAlumnoTable():'<div class="empty"><div class="big">👥</div><p>Sin alumnos.</p></div>'}`;
+  return `<div class="panel"><h3>👥 Registro de Alumnos</h3>
+  <input type="file" id="alumnosFile" accept=".json" style="display:none" onchange="importAlumnos(event)">
+  <div class="btn-row"><button class="btn btn-primary" onclick="document.getElementById('alumnosFile').click()">📂 Importar</button></div></div>
+  ${portal.registroAlumnos.length?portal.registroAlumnos.map(a=>`<div class="item"><div class="i-body"><div class="i-title">${esc(a.name)}</div><div class="i-meta"><span class="pill pill-grado">${gradoLabel(a.grado)}</span><span class="pill pill-grupo">${a.grupo}</span></div></div></div>`).join(''):'<p style="color:var(--muted);text-align:center">Sin alumnos.</p>'}`;
 }
-function importAlumnosJSON(e){
-const f=e.target.files[0]; if(!f)return;
-const r=new FileReader();
-r.onload=ev=>{try{
-const data=JSON.parse(ev.target.result), alumnos=[];
-if(data.alumnos&&Array.isArray(data.alumnos)) alumnos=data.alumnos.map(a=>({id:a.id||uid(),name:a.name||'',grado:a.grado||'2',grupo:a.grupo||'H'}));
-else if(data.groups&&Array.isArray(data.groups)) data.groups.forEach(g=>{(g.persons||g.students||[]).forEach((p,i)=>{alumnos.push({id:p.id||uid(),name:p.name||'',grado:g.grado||'2',grupo:g.grupo||'H'});}));}
-if(!alumnos.length){toast('Sin alumnos','error');return;}
-portal.registroAlumnos=alumnos; saveStore(); renderTeacherContent(); toast(`✓ ${alumnos.length} importados`,'success');
-}catch(err){toast('Error JSON','error');}};
-r.readAsText(f); e.target.value='';
+function importAlumnos(e){
+  const f=e.target.files[0]; if(!f)return;
+  const r=new FileReader();
+  r.onload=ev=>{try{
+    const data=JSON.parse(ev.target.result);
+    if(data.alumnos&&Array.isArray(data.alumnos)) portal.registroAlumnos=data.alumnos;
+    else if(data.groups&&Array.isArray(data.groups)){
+      portal.registroAlumnos=[];
+      data.groups.forEach(g=>{(g.persons||g.students||[]).forEach(p=>{
+        portal.registroAlumnos.push({id:p.id||uid(),name:p.name||'',grado:g.grado||'2',grupo:g.grupo||'H'});
+      });});
+    }
+    saveStore(); renderTeacherContent(); toast('Importado ✓','success');
+  }catch(err){toast('Error JSON','error');}};
+  r.readAsText(f); e.target.value='';
 }
-function clearAlumnos(){ if(!confirm('¿Borrar todo?'))return; portal.registroAlumnos=[]; saveStore(); renderTeacherContent(); }
-function renderAlumnoTable(){
-let filtrados=portal.registroAlumnos;
-if(alumnoGradoFiltro!=='todos') filtrados=filtrados.filter(a=>a.grado===alumnoGradoFiltro);
-if(alumnoGrupoFiltro!=='todos') filtrados=filtrados.filter(a=>a.grupo===alumnoGrupoFiltro);
-if(!filtrados.length) return '<div class="empty"><p>Sin alumnos para este filtro.</p></div>';
-const org={}; filtrados.forEach(a=>{const k=a.grado+'-'+a.grupo;if(!org[k])org[k]=[];org[k].push(a);});
-let html='';
-Object.keys(org).sort().forEach(k=>{
-const [g,gr]=k.split('-'); const alumnos=org[k].sort((a,b)=>a.name.localeCompare(b.name));
-html+=`<div class="panel"><h3><span class="pill pill-grado">${gradoLabel(g)}</span> <span class="pill pill-grupo">${gr}</span></h3><div class="grades-wrap"><table class="grades-table"><thead><tr><th>#</th><th>ID</th><th>Nombre</th><th>Acciones</th></tr></thead><tbody>${alumnos.map((a,i)=>`<tr><td style="text-align:center">${i+1}</td><td><code style="background:var(--soft);padding:3px 8px;border-radius:5px">${escHtml(a.id)}</code></td><td>${escHtml(a.name)}</td><td style="text-align:center"><button class="btn btn-danger btn-small" onclick="delAlumno('${a.id}')">🗑️</button></td></tr>`).join('')}</tbody></table></div></div>`;
-});
-html+=`<div class="panel"><div class="btn-row"><button class="btn btn-green" onclick="saveStore();syncToFirebase(true);toast('Sincronizado ✓','success')">☁️ Guardar en Firebase</button><button class="btn btn-blue" onclick="exportAlumnos()">📥 Descargar JSON</button></div></div>`;
-return html;
-}
-function delAlumno(id){ if(!confirm('¿Eliminar?'))return; portal.registroAlumnos=portal.registroAlumnos.filter(a=>a.id!==id); saveStore(); renderTeacherContent(); }
-function exportAlumnos(){ const b=new Blob([JSON.stringify({alumnos:portal.registroAlumnos,exportedAt:new Date().toISOString()},null,2)]); const a=document.createElement('a'); a.href=URL.createObjectURL(b); a.download=`alumnos_${new Date().toISOString().slice(0,10)}.json`; a.click(); toast('Exportado ✓'); }
 
 function viewMaterials(){
-return `<div class="panel"><h3>📁 Subir Material</h3><div class="form-row triple"><div class="form-group"><label>Tipo</label><select id="mTipo" onchange="toggleMatInput()"><option value="enlace">🔗 Enlace</option><option value="documento">📄 Documento</option><option value="imagen">🖼️ Imagen</option></select></div><div class="form-group"><label>Grado</label><select id="mGrado"><option value="todos">Todos</option><option value="2">2°</option><option value="3">3°</option></select></div><div class="form-group"><label>Grupo</label><select id="mGrupo"><option value="todos">Todos</option><option value="H">H</option><option value="I">I</option></select></div></div><div class="form-group"><label>Título</label><input type="text" id="mTitulo" placeholder="Nombre"></div><div id="mContent"><label>URL</label><input type="url" id="mUrl" placeholder="https://..."></div><div class="btn-row"><button class="btn btn-primary" onclick="saveMaterial()">💾 Guardar</button></div></div><div class="panel"><h3>Materiales cargados</h3>${portal.materiales.length?portal.materiales.map(m=>`<div class="item"><div class="i-body"><div class="i-title">${escHtml(m.titulo)}</div><div class="i-meta"><span class="pill ${m.visible?'pill-on':'pill-off'}">${m.visible?'Activo':'Inactivo'}</span></div></div><div class="i-actions"><label class="switch"><input type="checkbox" ${m.visible?'checked':''} onchange="toggleMat('${m.id}')"><span class="slider"></span></label><button class="btn btn-danger btn-small" onclick="delMat('${m.id}')">🗑️</button></div></div>`).join(''):'<p style="color:var(--muted);text-align:center">Sin materiales.</p>'}</div>`;
+  return `<div class="panel"><h3>📁 Subir Material</h3>
+  <div class="form-row"><div class="form-group"><label>Tipo</label><select id="mTipo"><option value="enlace">🔗 Enlace</option><option value="doc">📄 Documento</option></select></div>
+  <div class="form-group"><label>Título</label><input type="text" id="mTitulo"></div></div>
+  <div id="mContent"><label>URL</label><input type="url" id="mUrl"></div>
+  <div class="btn-row"><button class="btn btn-primary" onclick="saveMaterial()">💾 Guardar</button></div></div>
+  ${portal.materiales.length?portal.materiales.map(m=>`<div class="item"><div class="i-body"><div class="i-title">${esc(m.titulo)}</div></div><div class="i-actions"><button class="btn btn-danger btn-small" onclick="delMat('${m.id}')">🗑️</button></div></div>`).join(''):'<p style="color:var(--muted);text-align:center">Sin materiales.</p>'}`;
 }
-function toggleMatInput(){ const t=document.getElementById('mTipo').value; document.getElementById('mContent').innerHTML=t==='enlace'?`<label>URL</label><input type="url" id="mUrl" placeholder="https://...">`:`<label>Archivo</label><input type="file" id="mFile">`; }
-async function saveMaterial(){
-const tipo=document.getElementById('mTipo').value, titulo=document.getElementById('mTitulo').value.trim();
-const grado=document.getElementById('mGrado').value, grupo=document.getElementById('mGrupo').value;
-if(!titulo) return toast('Falta título','error');
-let contenido='', nombreFile='';
-try{ if(tipo==='enlace'){ const u=document.getElementById('mUrl').value; if(!u)return toast('Falta URL','error'); contenido=u; }
-else{ const f=document.getElementById('mFile').files[0]; if(!f)return toast('Falta archivo','error'); contenido=await fileToBase64(f); nombreFile=f.name; }
-}catch(e){return toast('Error','error');}
-portal.materiales.push({id:uid(),tipo,titulo,grado,grupo,contenido,nombreFile,visible:true}); saveStore(); renderTeacherContent(); toast('Guardado ✓');
+function saveMaterial(){
+  const tipo=document.getElementById('mTipo').value, titulo=document.getElementById('mTitulo').value.trim();
+  if(!titulo)return toast('Falta título','error');
+  let contenido='';
+  if(tipo==='enlace'){const u=document.getElementById('mUrl').value; if(!u)return toast('Falta URL','error'); contenido=u;}
+  portal.materiales.push({id:uid(),tipo,titulo,grado:'todos',grupo:'todos',contenido,visible:true});
+  saveStore(); renderTeacherContent(); toast('Guardado ✓');
 }
-function toggleMat(id){ const m=portal.materiales.find(x=>x.id===id); if(m){m.visible=!m.visible; saveStore(); renderTeacherContent();} }
 function delMat(id){ if(!confirm('¿Eliminar?'))return; portal.materiales=portal.materiales.filter(m=>m.id!==id); saveStore(); renderTeacherContent(); }
 
-function viewActividades(){
-return `<div class="panel"><h3>📌 Crear Actividad</h3><div class="form-row"><div class="form-group"><label>Título</label><input type="text" id="actTitulo" placeholder="Nombre"></div><div class="form-group"><label>Fecha/Hora entrega</label><input type="datetime-local" id="actFecha"></div></div><div class="form-group" style="margin-bottom:1rem"><label>Instrucciones</label><textarea id="actDesc"></textarea></div><div class="form-row"><div class="form-group"><label>Grado</label><select id="actGrado"><option value="todos">Todos</option><option value="2">2°</option><option value="3">3°</option></select></div><div class="form-group"><label>Grupo</label><select id="actGrupo"><option value="todos">Todos</option><option value="H">H</option><option value="I">I</option></select></div></div><div class="btn-row"><button class="btn btn-primary" onclick="saveActividad()">📤 Publicar</button></div></div><div class="panel"><h3>Publicadas</h3>${portal.actividades.length?portal.actividades.map(a=>`<div class="item"><div class="i-body"><div class="i-title">${escHtml(a.titulo)}</div><div class="i-meta"><span>🕐 ${new Date(a.fechaEntrega).toLocaleString('es-MX')}</span></div></div><div class="i-actions"><button class="btn btn-danger btn-small" onclick="delAct('${a.id}')">🗑️</button></div></div>`).join(''):'<p style="color:var(--muted);text-align:center">Sin actividades.</p>'}</div>`;
+function viewActivities(){
+  return `<div class="panel"><h3>📌 Crear Actividad</h3>
+  <div class="form-row"><div class="form-group"><label>Título</label><input type="text" id="actTitulo"></div>
+  <div class="form-group"><label>Fecha entrega</label><input type="datetime-local" id="actFecha"></div></div>
+  <div class="btn-row"><button class="btn btn-primary" onclick="saveActividad()">📤 Publicar</button></div></div>
+  ${portal.actividades.length?portal.actividades.map(a=>`<div class="item"><div class="i-body"><div class="i-title">${esc(a.titulo)}</div></div><div class="i-actions"><button class="btn btn-danger btn-small" onclick="delAct('${a.id}')">🗑️</button></div></div>`).join(''):'<p style="color:var(--muted);text-align:center">Sin actividades.</p>'}`;
 }
 function saveActividad(){
-const titulo=document.getElementById('actTitulo').value.trim(), fecha=document.getElementById('actFecha').value;
-const desc=document.getElementById('actDesc').value, grado=document.getElementById('actGrado').value, grupo=document.getElementById('actGrupo').value;
-if(!titulo||!fecha) return toast('Título y fecha obligatorios','error');
-portal.actividades.push({id:uid(),titulo,fechaEntrega:fecha,desc,grado,grupo,adjuntos:[],visible:true}); saveStore(); renderTeacherContent(); toast('Publicada ✓');
+  const titulo=document.getElementById('actTitulo').value.trim(), fecha=document.getElementById('actFecha').value;
+  if(!titulo||!fecha)return toast('Título y fecha obligatorios','error');
+  portal.actividades.push({id:uid(),titulo,fechaEntrega:fecha,grado:'todos',grupo:'todos',visible:true});
+  saveStore(); renderTeacherContent(); toast('Publicada ✓');
 }
-function delAct(id){ if(!confirm('¿Eliminar?'))return; portal.actividades=portal.actividades.filter(a=>a.id!==id); portal.submissions=portal.submissions.filter(e=>e.actividadId!==id); saveStore(); renderTeacherContent(); }
+function delAct(id){ if(!confirm('¿Eliminar?'))return; portal.actividades=portal.actividades.filter(a=>a.id!==id); saveStore(); renderTeacherContent(); }
 
 function viewEntregas(){
-return `<div class="panel"><h3>📥 Buzón de Entregas</h3><p class="sub">Recibidas en tiempo real</p></div>${portal.submissions.length?portal.submissions.map(e=>`<div class="panel"><div class="item"><div class="i-body"><div class="i-title">${esc(e.nombreAlumno)}</div><div class="i-meta"><span>📅 ${new Date(e.fecha).toLocaleString('es-MX')}</span></div></div><div class="i-actions">${e.archivos.map(f=>`<span class="file-chip" onclick="descFile('${e.id}','${f.nombre}')">⬇️ ${esc(f.nombre)}</span>`).join('')}</div></div></div>`).join(''):'<div class="empty"><div class="big">📭</div><p>Sin entregas aún.</p></div>'}`;
+  return `<div class="panel"><h3>📥 Entregas</h3></div>
+  ${portal.submissions.length?portal.submissions.map(e=>`<div class="item"><div class="i-body"><div class="i-title">${esc(e.nombreAlumno)} - ${esc(e.actividadNombre||'')}</div><div class="i-meta"><span>📅 ${new Date(e.fecha).toLocaleString('es-MX')}</span></div></div></div>`).join(''):'<div class="empty"><p>Sin entregas aún.</p></div>'}`;
 }
-function descFile(entId,fname){ const ent=portal.submissions.find(e=>e.id===entId); const f=ent?.archivos.find(x=>x.nombre===fname); if(f){const a=document.createElement('a');a.href=f.contenido;a.download=f.nombre;a.click();} }
 
 function viewExams(){
-return `<div class="panel"><h3>📝 Exámenes</h3><p class="sub">Crea exámenes para tus grupos</p><div class="form-row"><div class="form-group"><label>Título</label><input type="text" id="exTitulo"></div><div class="form-group"><label>Grado</label><select id="exGrado"><option value="todos">Todos</option><option value="2">2°</option><option value="3">3°</option></select></div></div><div class="form-group"><label>Grupo</label><select id="exGrupo"><option value="todos">Todos</option><option value="H">H</option><option value="I">I</option></select></div><div class="btn-row"><button class="btn btn-sec" onclick="addQuestionEx()">➕ Agregar Pregunta</button><button class="btn btn-primary" onclick="saveExam()">💾 Guardar</button></div><div id="exQuestions"></div></div><div class="panel"><h3>Exámenes creados</h3>${portal.examenes.length?portal.examenes.map(e=>`<div class="item"><div class="i-body"><div class="i-title">${escHtml(e.titulo)}</div></div><div class="i-actions"><button class="btn btn-danger btn-small" onclick="delExam('${e.id}')">🗑️</button></div></div>`).join(''):'<p style="color:var(--muted);text-align:center">Sin exámenes.</p>'}</div>`;
+  return `<div class="panel"><h3>📝 Exámenes</h3><p class="sub">Crea exámenes para tus grupos</p>
+  <div class="form-row"><div class="form-group"><label>Título</label><input type="text" id="exTitulo"></div></div>
+  <div class="btn-row"><button class="btn btn-primary" onclick="saveExam()">💾 Guardar</button></div></div>
+  ${portal.examenes.length?portal.examenes.map(e=>`<div class="item"><div class="i-body"><div class="i-title">${esc(e.titulo)}</div></div><div class="i-actions"><button class="btn btn-danger btn-small" onclick="delExam('${e.id}')">🗑️</button></div></div>`).join(''):'<p style="color:var(--muted);text-align:center">Sin exámenes.</p>'}`;
 }
-let exDraft={questions:[]};
-function addQuestionEx(){ exDraft.questions.push({q:'',opts:['',''],correcta:0}); document.getElementById('exQuestions').innerHTML=exDraft.questions.map((q,i)=>`<div class="exam-q"><h4>Pregunta ${i+1}</h4><input type="text" value="${esc(q.q)}" oninput="exDraft.questions[${i}].q=this.value" placeholder="Enunciado"><div class="exam-opts">${q.opts.map((o,j)=>`<div><input type="radio" name="c${i}" ${q.correcta===j?'checked':''} onchange="exDraft.questions[${i}].correcta=${j}"><input type="text" value="${esc(o)}" oninput="exDraft.questions[${i}].opts[${j}]=this.value"></div>`).join('')}</div></div>`).join(''); }
 function saveExam(){
-const titulo=document.getElementById('exTitulo').value.trim();
-if(!titulo||!exDraft.questions.length) return toast('Falta título o preguntas','error');
-portal.examenes.push({id:uid(),titulo,grado:document.getElementById('exGrado').value,grupo:document.getElementById('exGrupo').value,preguntas:JSON.parse(JSON.stringify(exDraft.questions)),visible:true});
-saveStore(); exDraft={questions:[]}; renderTeacherContent(); toast('Examen guardado ✓');
+  const titulo=document.getElementById('exTitulo').value.trim();
+  if(!titulo)return toast('Falta título','error');
+  portal.examenes.push({id:uid(),titulo,grado:'todos',grupo:'todos',preguntas:[],visible:true});
+  saveStore(); renderTeacherContent(); toast('Examen guardado ✓');
 }
 function delExam(id){ if(!confirm('¿Eliminar?'))return; portal.examenes=portal.examenes.filter(e=>e.id!==id); saveStore(); renderTeacherContent(); }
 
 function viewIO(){
-return `<div class="panel"><h3>☁️ Sincronización Firebase</h3><p class="sub">Los cambios se publican automáticamente. Usa este botón para forzar.</p><button class="btn btn-green" onclick="forcePublish()">☁️ Publicar ahora</button></div><div class="panel"><h3>💾 Respaldo</h3><input type="file" id="ioFile" accept=".json" style="display:none" onchange="importJSON(this)"><div class="btn-row"><button class="btn btn-blue" onclick="exportJSON()">📤 Exportar</button><button class="btn btn-sec" onclick="document.getElementById('ioFile').click()">📥 Importar</button><button class="btn btn-danger" onclick="if(confirm('¿Borrar todo?')){portal={alumnos:[],materiales:[],actividades:[],entregas:[],examenes:[]};saveStore();renderTeacherContent();toast('Borrado')}">🗑️ Borrar todo</button></div></div>`;
+  return `<div class="panel"><h3>☁️ Firebase</h3><button class="btn btn-green" onclick="forcePublish()">☁️ Publicar ahora</button></div>
+  <div class="panel"><h3>💾 Respaldo</h3>
+  <div class="btn-row"><button class="btn btn-blue" onclick="exportJSON()">📤 Exportar</button><button class="btn btn-danger" onclick="if(confirm('¿Borrar todo?')){portal={materials:[],exams:[],calif:null,examResults:[],registroAlumnos:[],activities:[],submissions:[]};saveStore();renderTeacherContent();toast('Borrado')}">🗑️ Borrar todo</button></div></div>`;
 }
-function exportJSON(){ const b=new Blob([JSON.stringify(portal,null,2)]); const a=document.createElement('a'); a.href=URL.createObjectURL(b); a.download=`portal_${new Date().toISOString().slice(0,10)}.json`; a.click(); }
-function importJSON(inp){ const f=inp.files[0]; if(!f)return; const r=new FileReader(); r.onload=()=>{ try{Object.assign(portal,JSON.parse(r.result));saveStore();renderTeacherContent();toast('Importado ✓')}catch(e){toast('JSON inválido','error')}}; r.readAsText(f); }
+function exportJSON(){ const b=new Blob([JSON.stringify(portal,null,2)]); const a=document.createElement('a'); a.href=URL.createObjectURL(b); a.download='portal_'+new Date().toISOString().slice(0,10)+'.json'; a.click(); }
+function forcePublish(){ if(!fbReady||!fbConnected){toast('Firebase no disponible','error');return;} fbDb.ref('portal/data').set({materials:portal.materials,exams:portal.exams,calif:portal.calif,registroAlumnos:portal.registroAlumnos,activities:portal.activities,updatedAt:Date.now()}).then(()=>toast('Publicado ✓','success')).catch(e=>toast('Error: '+e.message,'error')); }
 
-/* ═══════════════════════════════════════════
-STUDENT & PARENT
-═══════════════════════════════════════════ */
-let studentTab='materiales';
-function renderStudentTabs(){
-const tabs=[{id:'materiales',label:'📁 Materiales'},{id:'tareas',label:'📝 Tareas'},{id:'examenes',label:'📋 Exámenes'}];
-document.getElementById('tabs').innerHTML=tabs.map(t=>`<button class="tab ${studentTab===t.id?'active':''}" onclick="setStudentTab('${t.id}')">${t.label}</button>`).join('');
-renderCurrentContent();
-}
-function setStudentTab(id){ studentTab=id; renderStudentTabs(); }
-
-let parentTab='tareas';
-function renderParentTabs(){
-const tabs=[{id:'tareas',label:'📝 Tareas'},{id:'conducta',label:'⚠️ Conducta'},{id:'resumen',label:'🏆 Resumen'}];
-document.getElementById('tabs').innerHTML=tabs.map(t=>`<button class="tab ${parentTab===t.id?'active':''}" onclick="setParentTab('${t.id}')">${t.label}</button>`).join('');
-}
-function setParentTab(id){ parentTab=id; renderParentTabs(); renderParentContent(); }
-
-function renderCurrentContent(){
-if(!session) return;
-if(session.role==='teacher') renderTeacherContent();
-else if(session.role==='student') renderStudentContent();
-else renderParentContent();
-}
-
+// ── STUDENT VIEWS ─────────────────────────────────────
 function renderStudentContent(){
-const c=document.getElementById('content');
-const gradoOk=m=>m.grado==='todos'||String(m.grado)===String(session.grado);
-const grupoOk=m=>m.grupo==='todos'||String(m.grupo||'').toUpperCase()===String(session.grupo||'').toUpperCase();
-if(studentTab==='materiales'){
-const mats=portal.materiales.filter(m=>gradoOk(m)&&grupoOk(m));
-c.innerHTML=`<div class="panel"><h3>📁 Materiales para ${session.grado}° ${session.grupo}</h3></div>${mats.length?mats.map(m=>`<div class="item"><div class="i-body"><div class="i-title">${escHtml(m.titulo)}</div></div><div class="i-actions"><button class="btn btn-primary btn-small" onclick="openMaterial('${m.id}')">Abrir</button></div></div>`).join(''):'<div class="empty"><p>Sin materiales.</p></div>'}`;
-} else if(studentTab==='tareas'){
-const acts=portal.actividades.filter(a=>gradoOk(a)&&grupoOk(a));
-const mySubs=portal.submissions.filter(e=>e.alumnoId===session.id);
-c.innerHTML=`<div class="panel"><h3>📝 Mis Tareas</h3></div>${acts.length?acts.map(a=>{const sub=mySubs.find(e=>e.actividadId===a.id);return `<div class="panel"><h3>${escHtml(a.titulo)}</h3><p class="sub">⏰ ${new Date(a.fechaEntrega).toLocaleString('es-MX')}</p>${sub?`<div style="background:var(--soft);padding:.8rem;border-radius:8px;margin-bottom:1rem">✅ Entregado</div><button class="btn btn-sec btn-sm" onclick="replaceTask('${a.id}')">🔄 Reemplazar</button><button class="btn btn-danger btn-sm" onclick="deleteTask('${a.id}')">🗑️ Eliminar</button>`:`<input type="file" id="file_${a.id}"><button class="btn btn-primary btn-sm" onclick="submitTask('${a.id}')">📤 Entregar</button>`}</div>`;}).join(''):'<div class="empty"><p>Sin tareas.</p></div>'}`;
-} else {
-const exams=portal.examenes.filter(e=>gradoOk(e)&&grupoOk(e));
-c.innerHTML=exams.length?exams.map(e=>`<div class="item"><div class="i-body"><div class="i-title">${escHtml(e.titulo)}</div></div><div class="i-actions"><button class="btn btn-primary btn-small" onclick="alert('Función de examen próximamente')">🚀 Iniciar</button></div></div>`).join(''):'<div class="empty"><p>Sin exámenes.</p></div>';
+  const c=document.getElementById('content');
+  if(studentTab==='materials'){
+    const mats=portal.materiales.filter(m=>m.visible);
+    c.innerHTML=`<div class="panel"><h3>📁 Materiales</h3></div>${mats.length?mats.map(m=>`<div class="item"><div class="i-body"><div class="i-title">${esc(m.titulo)}</div></div><div class="i-actions"><button class="btn btn-primary btn-small" onclick="openMaterial('${m.id}')">Abrir</button></div></div>`).join(''):'<div class="empty"><p>Sin materiales.</p></div>'}`;
+  }else if(studentTab==='activities'){
+    const acts=portal.actividades.filter(a=>a.visible);
+    c.innerHTML=`<div class="panel"><h3>📌 Tareas</h3></div>${acts.length?acts.map(a=>`<div class="panel"><h3>${esc(a.titulo)}</h3><p class="sub">⏰ ${new Date(a.fechaEntrega).toLocaleString('es-MX')}</p></div>`).join(''):'<div class="empty"><p>Sin tareas.</p></div>'}`;
+  }else{
+    const exams=portal.examenes.filter(e=>e.visible);
+    c.innerHTML=exams.length?exams.map(e=>`<div class="item"><div class="i-body"><div class="i-title">${esc(e.titulo)}</div></div><div class="i-actions"><button class="btn btn-primary btn-small">🚀 Iniciar</button></div></div>`).join(''):'<div class="empty"><p>Sin exámenes.</p></div>';
+  }
 }
-}
-function openMaterial(id){
-const m=portal.materiales.find(x=>x.id===id); if(!m)return;
-if(m.tipo==='enlace') window.open(m.contenido,'_blank');
-else{const a=document.createElement('a');a.href=m.contenido;a.download=m.nombreFile||m.titulo;a.click();}
-}
-async function submitTask(actId,replace=false){
-const fInput=document.getElementById('file_'+actId); if(!fInput||!fInput.files.length) return toast('Selecciona archivo','error');
-const f=fInput.files[0]; if(f.size>10*1024*1024) return toast('Máx 10MB','error');
-const content=await fileToBase64(f);
-const newSub={id:uid(),actividadId:actId,actividadNombre:portal.actividades.find(a=>a.id===actId)?.titulo||'',alumnoId:session.id,nombreAlumno:session.label,grado:session.grado,grupo:session.grupo,archivos:[{nombre:f.nombre,contenido:content}],fecha:new Date().toISOString()};
-if(replace) portal.submissions=portal.submissions.filter(e=>!(e.actividadId===actId&&e.alumnoId===session.id));
-portal.submissions.push(newSub); saveStore(); pushSubmissionFB(newSub); renderStudentContent(); toast(replace?'Reemplazado ✓':'Entregado ✓');
-}
-function replaceTask(id){ submitTask(id,true); }
-function deleteTask(id){ if(!confirm('¿Eliminar?'))return; portal.submissions=portal.submissions.filter(e=>!(e.actividadId===id&&e.alumnoId===session.id)); saveStore(); deleteSubmissionFB(id,session.id); renderStudentContent(); }
+function openMaterial(id){ const m=portal.materiales.find(x=>x.id===id); if(!m)return; if(m.tipo==='enlace')window.open(m.contenido,'_blank'); else{const a=document.createElement('a');a.href=m.contenido;a.download=m.titulo;a.click();} }
 
+// ── PARENT VIEWS (Read-only) ─────────────────────────────────────
 function renderParentContent(){
-const c=document.getElementById('content');
-if(parentTab==='tareas'){
-const acts=portal.actividades.filter(a=>(a.grado==='todos'||a.grado===session.grado)&&(a.grupo==='todos'||a.grupo===session.grupo));
-const entregas=portal.submissions.filter(e=>e.alumnoId===session.id);
-const stats={total:acts.length, ok:0, retardo:0, no:0};
-entregas.forEach(e=>{ const a=acts.find(x=>x.id===e.actividadId); if(a){ const due=new Date(a.fechaEntrega), now=new Date(); if(now>due) stats.retardo++; else stats.ok++; } else stats.no++; });
-c.innerHTML=`<div class="panel"><h3>📋 Tareas de ${session.studentName}</h3></div><div class="stats-grid"><div class="stat"><div class="label">📚 Total</div><div class="value">${stats.total}</div></div><div class="stat green"><div class="label">✅ Entregadas</div><div class="value">${stats.ok}</div></div><div class="stat orange"><div class="label">⏰ Retardo</div><div class="value">${stats.retardo}</div></div><div class="stat red"><div class="label">❌ Sin entregar</div><div class="value">${stats.no}</div></div></div>${acts.map(a=>{ const sub=entregas.find(e=>e.actividadId===a.id); return `<div class="panel"><h3>${escHtml(a.titulo)}</h3><p class="sub">${sub?'✅ Entregada':'⏳ Pendiente'} · ${new Date(a.fechaEntrega).toLocaleString('es-MX')}</p></div>`; }).join('')}`;
-} else if(parentTab==='conducta'){
-c.innerHTML=`<div class="panel"><h3>⚠️ Conducta</h3><p class="sub">Registros del maestro</p></div><div class="panel" style="border-left:4px solid var(--green)"><h3>📅 ${new Date().toLocaleDateString('es-MX')}</h3><p class="sub">Sin observaciones negativas recientes.</p></div>`;
-} else {
-c.innerHTML=`<div class="panel"><h3>🏆 Resumen Final</h3><p class="sub">Avance general de ${session.studentName}</p></div><div class="stats-grid"><div class="stat"><div class="label">📘 1er Trimestre</div><div class="value">—</div></div><div class="stat green"><div class="label">📗 2do Trimestre</div><div class="value">—</div></div><div class="stat orange"><div class="label">📙 3er Trimestre</div><div class="value">—</div></div></div>`;
-}
+  const c=document.getElementById('content');
+  if(parentTab==='grades'){
+    c.innerHTML=`<div class="panel"><h3>📋 Calificaciones de ${session.studentName}</h3><p class="sub">Solo lectura</p></div><div class="stats-grid"><div class="stat"><div class="label">📚 Total</div><div class="value">—</div></div><div class="stat green"><div class="label">✅ Entregadas</div><div class="value">—</div></div></div>`;
+  }else if(parentTab==='tasks'){
+    c.innerHTML=`<div class="panel"><h3>📝 Tareas</h3></div><div class="empty"><p>Sin tareas pendientes.</p></div>`;
+  }else if(parentTab==='conduct'){
+    c.innerHTML=`<div class="panel"><h3>⚠️ Conducta</h3><p class="sub">Sin observaciones registradas.</p></div>`;
+  }else{
+    c.innerHTML=`<div class="panel"><h3>🏆 Resumen Final</h3><div class="stats-grid"><div class="stat"><div class="label">📘 T1</div><div class="value">—</div></div><div class="stat green"><div class="label">📗 T2</div><div class="value">—</div></div><div class="stat orange"><div class="label">📙 T3</div><div class="value">—</div></div></div></div>`;
+  }
 }
 
-// Enter key
+// Enter key support
 document.addEventListener('keydown',e=>{
-if(e.key==='Enter'){
-if(document.activeElement.id==='tUser'||document.activeElement.id==='tPass') loginTeacher();
-else if(document.activeElement.id==='sCode') loginStudent();
-else if(document.activeElement.id==='pCode') loginParent();
-}
+  if(e.key==='Enter'){
+    if(document.activeElement.id==='tUser'||document.activeElement.id==='tPass')loginTeacher();
+    else if(document.activeElement.id==='sCode')loginStudent();
+    else if(document.activeElement.id==='pCode')loginParent();
+  }
 });
 </script>
 </body>
