@@ -366,42 +366,22 @@
    ║  ►►► CONFIGURACIÓN — EDITA ESTOS VALORES                             ◄◄◄  ║
    ╚══════════════════════════════════════════════════════════════════════╝ */
 const CONFIG = {
-  // Clave del almacenamiento local (no la cambies después de empezar a usar
-  // la app, porque "perderías" los datos guardados con la clave anterior).
   storeKey: 'portalv2',
-
-  // Credenciales del maestro.
-  // El usuario es texto plano (no es secreto). La contraseña NUNCA viaja
-  // en plano: se guarda solo el hash SHA-256 de la combinación  (sal + ":" + contraseña).
-  // Si quieres cambiar la contraseña, abre la consola del navegador y ejecuta:
-  //   await sha256(CONFIG.teacherPassSalt + ':' + 'tu_nueva_contraseña')
-  // El valor que imprima reemplaza al de teacherPassHash.
-  teacherUser:     'sultan',
+  teacherUser: 'sultan',
   teacherPassSalt: 'portal-mate-9f3a8b2c',
   teacherPassHash: '2faec1bf4ab07023834f986d9848ae9fdd8e1aba02a068ed5c4a5fbb0ddebfa0',
-
-  // Política de intentos: tras N intentos fallidos seguidos, bloqueo de M minutos.
   loginMaxAttempts: 5,
-  loginLockoutMin:  5,
-
-  // Grados y grupos que atiende el maestro. Estos son los únicos que
-  // aparecerán en los selectores al agregar alumnos, materiales, tareas
-  // y exámenes. Agrega o quita valores aquí cuando cambien tus grupos.
-  grades: ['2','3'],            // segundos y terceros
-  groups: ['H','I'],             // grupos H e I
-
-  // Firebase: deja todo en "PEGAR_AQUI" para usar SOLO localStorage (un
-  // navegador, sin sincronización entre dispositivos). Cuando estés listo,
-  // crea un proyecto en https://console.firebase.google.com, activa
-  // Realtime Database, y reemplaza cada valor por el de tu proyecto.
+  loginLockoutMin: 5,
+  grades: ['2','3'],
+  groups: ['H','I'],
   firebase: {
-    apiKey:            'PEGAR_AQUI',
-    authDomain:        'PEGAR_AQUI',
-    databaseURL:       'PEGAR_AQUI',
-    projectId:         'PEGAR_AQUI',
-    storageBucket:     'PEGAR_AQUI',
-    messagingSenderId: 'PEGAR_AQUI',
-    appId:             'PEGAR_AQUI'
+    apiKey: "AIzaSyDX-LFHqml35isgYg13gqskgoVC_NVOUyc",
+    authDomain: "portal-matematicas.firebaseapp.com",
+    databaseURL: "https://portal-matematicas-default-rtdb.firebaseio.com",
+    projectId: "portal-matematicas",
+    storageBucket: "portal-matematicas.firebasestorage.app",
+    messagingSenderId: "283483476836",
+    appId: "1:283483476836:web:6c8123ca484cc807632071"
   }
 };
 
