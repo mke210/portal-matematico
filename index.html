@@ -332,14 +332,6 @@
 </head>
 <body>
 
-<!-- ╔══════════════════════════════════════════════════════════════════════╗
-     ║  PORTAL DE MATEMÁTICAS — versión nueva, independiente.                 ║
-     ║  Esta es una aplicación completa de página única (SPA) que funciona    ║
-     ║  100% en el navegador con localStorage. Cuando quieras compartir       ║
-     ║  datos entre dispositivos, pega tu firebaseConfig en CONFIG.firebase   ║
-     ║  (más abajo en el script) y la app se conectará automáticamente.       ║
-     ╚══════════════════════════════════════════════════════════════════════╝ -->
-
 <header class="topbar">
   <div class="brand">
     <div class="logo">🧮</div>
@@ -363,35 +355,22 @@
 'use strict';
 
 /* ╔══════════════════════════════════════════════════════════════════════╗
-   ║  ►►► CONFIGURACIÓN — EDITA ESTOS VALORES                             ◄◄◄  ║
+   ║  CONFIGURACIÓN - FIREBASE YA CONFIGURADO                             ║
    ╚══════════════════════════════════════════════════════════════════════╝ */
 const CONFIG = {
-  // Clave del almacenamiento local (no la cambies después de empezar a usar
-  // la app, porque "perderías" los datos guardados con la clave anterior).
   storeKey: 'portalv2',
-
-  // Credenciales del maestro. Cámbialas a algo personal.
   teacherUser: 'maestro',
   teacherPass: '1234',
-
-  // Grados y grupos que atiende el maestro. Estos son los únicos que
-  // aparecerán en los selectores al agregar alumnos, materiales, tareas
-  // y exámenes. Agrega o quita valores aquí cuando cambien tus grupos.
-  grades: ['2','3'],            // segundos y terceros
-  groups: ['H','I'],             // grupos H e I
-
-  // Firebase: deja todo en "PEGAR_AQUI" para usar SOLO localStorage (un
-  // navegador, sin sincronización entre dispositivos). Cuando estés listo,
-  // crea un proyecto en https://console.firebase.google.com, activa
-  // Realtime Database, y reemplaza cada valor por el de tu proyecto.
+  grades: ['2','3'],
+  groups: ['H','I'],
   firebase: {
-    apiKey:            'PEGAR_AQUI',
-    authDomain:        'PEGAR_AQUI',
-    databaseURL:       'PEGAR_AQUI',
-    projectId:         'PEGAR_AQUI',
-    storageBucket:     'PEGAR_AQUI',
-    messagingSenderId: 'PEGAR_AQUI',
-    appId:             'PEGAR_AQUI'
+    apiKey: "AIzaSyDX-LFHqml35isgYg13gqskgoVC_NVOUyc",
+    authDomain: "portal-matematicas.firebaseapp.com",
+    databaseURL: "https://portal-matematicas-default-rtdb.firebaseio.com",
+    projectId: "portal-matematicas",
+    storageBucket: "portal-matematicas.firebasestorage.app",
+    messagingSenderId: "283483476836",
+    appId: "1:283483476836:web:6c8123ca484cc807632071"
   }
 };
 
@@ -399,17 +378,16 @@ const CONFIG = {
    ║  Estado de la aplicación                                              ║
    ╚══════════════════════════════════════════════════════════════════════╝ */
 const state = {
-  // Cada grupo agrupa alumnos, actividades y calificaciones del mismo grado/letra.
-  groups: [],        // [{ id, grado, grupo, students:[{id,name,telefono,qrCode}], activities:[{id,name,createdAt}], grades:{ "sid_aid": "9.5" } }]
-  materials: [],     // [{ id, type:'link'|'doc'|'img'|'game', title, desc, url, grado, grupo, createdAt }]
-  tasks: [],         // [{ id, title, desc, url, dueDate, grado, grupo, done:{ studentId:true }, createdAt }]
-  exams: [],         // [{ id, title, desc, grado, grupo, questions:[{q,opts:[],correct}], createdAt }]
-  examResults: [],   // [{ examId, studentId, studentName, score, total, date }]
-  session: null      // { role:'teacher'|'student'|'parent', name, code?, studentId?, grado?, grupo? }
+  groups: [],
+  materials: [],
+  tasks: [],
+  exams: [],
+  examResults: [],
+  session: null
 };
 
 /* ╔══════════════════════════════════════════════════════════════════════╗
-   ║  Almacenamiento (localStorage + Firebase opcional)                    ║
+   ║  Almacenamiento (localStorage + Firebase)                            ║
    ╚══════════════════════════════════════════════════════════════════════╝ */
 function persistLocal(){
   try{
@@ -434,7 +412,6 @@ function loadLocal(){
 }
 function save(){ persistLocal(); fbPush(); }
 
-/* ── Firebase (sólo se activa si pegaste config real) ────────── */
 const fb = { ready:false, db:null, suppress:false };
 function firebaseConfigured(){
   const c = CONFIG.firebase;
@@ -645,7 +622,7 @@ function renderLanding(){
       </div>
       <p class="hint" style="text-align:center">
         ${firebaseConfigured()
-          ? 'Conectado en línea — los cambios se sincronizan entre dispositivos.'
+          ? '✅ Conectado en línea — los cambios se sincronizan entre dispositivos.'
           : 'Modo local — los datos se guardan en este navegador. Para sincronizar entre dispositivos, configura Firebase.'}
       </p>
     </div>
@@ -748,7 +725,6 @@ function viewAlumnos(){
   if(!all.length){
     return head + `<div class="empty"><div class="big">👥</div><p>Aún no hay alumnos.<br>Usa el botón <strong>Agregar alumno</strong> para empezar.</p></div>`;
   }
-  // Agrupar por grado/grupo
   const groups = sortedGroups().filter(g=>(g.students||[]).length);
   const body = groups.map(g=>{
     const students = (g.students||[]).slice().sort((a,b)=>String(a.name).localeCompare(String(b.name),'es'));
@@ -831,13 +807,11 @@ function saveAlumno(id){
   const tel = ($('#alTel')?.value||'').trim();
   if(!name){ toast('Falta el nombre','error'); return; }
   if(!code){ toast('Falta el código','error'); return; }
-  // Validar que el código sea único (excluyendo el propio si edita)
   const conflict = findStudentByCode(code);
   if(conflict && (!id || conflict.student.id!==id)){
     toast('Ese código ya lo usa otro alumno: '+conflict.student.name,'error'); return;
   }
   if(id){
-    // Editar: buscar al alumno, posiblemente moverlo de grupo
     let found = null;
     for(const gr of state.groups){
       const st = (gr.students||[]).find(x=>x.id===id);
@@ -846,12 +820,8 @@ function saveAlumno(id){
     if(!found){ toast('Alumno no encontrado','error'); return; }
     const sameGroup = String(found.group.grado)===String(grado) && String(found.group.grupo).toUpperCase()===grupo;
     if(!sameGroup){
-      // mover al alumno y arrastrar sus calificaciones
       const newG = getOrCreateGroup(grado, grupo);
-      // copiar calificaciones existentes para este alumno hacia las actividades del nuevo grupo solo si coinciden por nombre
-      // simplificación: no se arrastran; las del grupo anterior se borran junto con el alumno
       found.group.students = found.group.students.filter(x=>x.id!==id);
-      // limpiar grades del grupo anterior asociadas al alumno
       Object.keys(found.group.grades||{}).forEach(k=>{ if(k.startsWith(id+'_')) delete found.group.grades[k]; });
       newG.students.push({ id, name, telefono:tel, qrCode:code });
     } else {
@@ -1197,7 +1167,6 @@ function onTaskFileChosen(ev){
 }
 function saveTarea(){
   const urlField = $('#tkUrl').value.trim();
-  // Si hay archivo adjunto, gana sobre el enlace
   const url = _taskAttachment ? _taskAttachment.dataUrl : urlField;
   const attachmentName = _taskAttachment ? _taskAttachment.name : '';
   const obj = {
@@ -1345,7 +1314,7 @@ function verResultadosExamen(id){
   const rows = results.length ? results.map(r=>{
     const calif = ((r.score/r.total)*10).toFixed(1);
     return `<tr><td>${esc(r.studentName)}</td><td class="num">${r.score}/${r.total}</td><td class="num">${gradeChip(calif)}</td><td class="num" style="font-size:.78rem;color:var(--muted)">${fmtDate(r.date)}</td></tr>`;
-  }).join('') : `<tr><td colspan="4" style="text-align:center;color:var(--muted);padding:1.5rem">Sin respuestas todavía</td></tr>`;
+  }).join('') : `<td><td colspan="4" style="text-align:center;color:var(--muted);padding:1.5rem">Sin respuestas todavía</td></tr>`;
   openModal(`
     <div class="modal-head"><h3>📊 ${esc(e.title)}</h3><button class="modal-close" onclick="closeModal()">×</button></div>
     <div class="modal-body">
@@ -1495,7 +1464,6 @@ function studentMateriales(){
 
 function studentTareas(){
   const mine = state.tasks.filter(studentMatches).slice().sort((a,b)=>{
-    // pendientes primero (sin marcar), luego por fecha
     const da = a.done?.[state.session.studentId]?1:0, db = b.done?.[state.session.studentId]?1:0;
     if(da!==db) return da-db;
     return (a.dueDate||'').localeCompare(b.dueDate||'');
@@ -1748,14 +1716,12 @@ function parentResumen(){
     const v = (myGroup.grades||{})[me.id+'_'+a.id];
     return v!==undefined && v!==null && v!=='';
   }).length;
-  // tareas
   const sid = state.session.studentId;
   const tasks = state.tasks.filter(t=>
     (t.grado==='all'||String(t.grado)===String(myGroup.grado)) &&
     (t.grupo==='all'||String(t.grupo).toUpperCase()===String(myGroup.grupo).toUpperCase())
   );
   const tareasHechas = tasks.filter(t=>t.done&&t.done[sid]).length;
-  // exámenes
   const examResults = state.examResults.filter(r=>r.studentId===sid);
   return `
     <div class="panel tinted-green">
@@ -1775,7 +1741,7 @@ function parentResumen(){
           <thead><tr><th>Examen</th><th class="num">Aciertos</th><th class="num">Calif.</th><th class="num">Fecha</th></tr></thead>
           <tbody>${examResults.slice().sort((a,b)=>(b.date||'').localeCompare(a.date||'')).map(r=>{
             const e = state.exams.find(x=>x.id===r.examId);
-            return `<tr><td>${esc(e?e.title:'Examen')}</td><td class="num">${r.score}/${r.total}</td><td class="num">${gradeChip(((r.score/r.total)*10).toFixed(1))}</td><td class="num" style="font-size:.78rem;color:var(--muted)">${fmtDate(r.date)}</td></tr>`;
+            return `<tr><td>${esc(e?e.title:'Examen')}</td><td class="num">${r.score}/${r.total}</td><td class="num">${gradeChip(((r.score/r.total)*10).toFixed(1))}</td><td class="num" style="font-size:.78rem;color:var(--muted)">${fmtDate(r.date)}</td</tr>`;
           }).join('')}</tbody>
         </table></div>
       </div>
@@ -1790,7 +1756,6 @@ loadLocal();
 render();
 fbInit();
 
-// Atajo: doble clic en la barra para mostrar info de versión
 document.querySelector('.topbar')?.addEventListener('dblclick', ()=>{
   toast('Portal de Matemáticas v2 · '+(firebaseConfigured()?'Firebase activo':'modo local'),'success');
 });
