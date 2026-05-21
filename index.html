@@ -332,6 +332,14 @@
 </head>
 <body>
 
+<!-- ╔══════════════════════════════════════════════════════════════════════╗
+     ║  PORTAL DE MATEMÁTICAS — versión nueva, independiente.                 ║
+     ║  Esta es una aplicación completa de página única (SPA) que funciona    ║
+     ║  100% en el navegador con localStorage. Cuando quieras compartir       ║
+     ║  datos entre dispositivos, pega tu firebaseConfig en CONFIG.firebase   ║
+     ║  (más abajo en el script) y la app se conectará automáticamente.       ║
+     ╚══════════════════════════════════════════════════════════════════════╝ -->
+
 <header class="topbar">
   <div class="brand">
     <div class="logo">🧮</div>
@@ -355,22 +363,45 @@
 'use strict';
 
 /* ╔══════════════════════════════════════════════════════════════════════╗
-   ║  CONFIGURACIÓN - FIREBASE YA CONFIGURADO                             ║
+   ║  ►►► CONFIGURACIÓN — EDITA ESTOS VALORES                             ◄◄◄  ║
    ╚══════════════════════════════════════════════════════════════════════╝ */
 const CONFIG = {
+  // Clave del almacenamiento local (no la cambies después de empezar a usar
+  // la app, porque "perderías" los datos guardados con la clave anterior).
   storeKey: 'portalv2',
-  teacherUser: 'maestro',
-  teacherPass: '1234',
-  grades: ['2','3'],
-  groups: ['H','I'],
+
+  // Credenciales del maestro.
+  // El usuario es texto plano (no es secreto). La contraseña NUNCA viaja
+  // en plano: se guarda solo el hash SHA-256 de la combinación  (sal + ":" + contraseña).
+  // Si quieres cambiar la contraseña, abre la consola del navegador y ejecuta:
+  //   await sha256(CONFIG.teacherPassSalt + ':' + 'tu_nueva_contraseña')
+  // El valor que imprima reemplaza al de teacherPassHash.
+  teacherUser:     'sultan',
+  teacherPassSalt: 'portal-mate-9f3a8b2c',
+  teacherPassHash: '2faec1bf4ab07023834f986d9848ae9fdd8e1aba02a068ed5c4a5fbb0ddebfa0',
+
+  // Política de intentos: tras N intentos fallidos seguidos, bloqueo de M minutos.
+  loginMaxAttempts: 5,
+  loginLockoutMin:  5,
+
+  // Grados y grupos que atiende el maestro. Estos son los únicos que
+  // aparecerán en los selectores al agregar alumnos, materiales, tareas
+  // y exámenes. Agrega o quita valores aquí cuando cambien tus grupos.
+  grades: ['2','3'],            // segundos y terceros
+  groups: ['H','I'],             // grupos H e I
+
+  // Firebase: deja todo en "PEGAR_AQUI" para usar SOLO localStorage (un
+  // navegador, sin sincronización entre dispositivos). Cuando estés listo,
+  // crea un proyecto en https://console.firebase.google.com, activa
+  // Realtime Database, y reemplaza cada valor por el de tu proyecto.
   firebase: {
-    apiKey: "AIzaSyDX-LFHqml35isgYg13gqskgoVC_NVOUyc",
-    authDomain: "portal-matematicas.firebaseapp.com",
-    databaseURL: "https://portal-matematicas-default-rtdb.firebaseio.com",
-    projectId: "portal-matematicas",
-    storageBucket: "portal-matematicas.firebasestorage.app",
-    messagingSenderId: "283483476836",
-    appId: "1:283483476836:web:6c8123ca484cc807632071"
+    apiKey:            'PEGAR_AQUI',
+    authDomain:        'PEGAR_AQUI',
+    databaseURL:       'PEGAR_AQUI',
+    projectId:         'PEGAR_AQUI',
+    storageBucket:     'PEGAR_AQUI',
+    messagingSenderId: 'PEGAR_AQUI',
+    appId:             'PEGAR_AQUI'
   }
 };
 
@@ -378,16 +409,17 @@ const CONFIG = {
    ║  Estado de la aplicación                                              ║
    ╚══════════════════════════════════════════════════════════════════════╝ */
 const state = {
-  groups: [],
-  materials: [],
-  tasks: [],
-  exams: [],
-  examResults: [],
-  session: null
+  // Cada grupo agrupa alumnos, actividades y calificaciones del mismo grado/letra.
+  groups: [],        // [{ id, grado, grupo, students:[{id,name,telefono,qrCode}], activities:[{id,name,createdAt}], grades:{ "sid_aid": "9.5" } }]
+  materials: [],     // [{ id, type:'link'|'doc'|'img'|'game', title, desc, url, grado, grupo, createdAt }]
+  tasks: [],         // [{ id, title, desc, url, dueDate, grado, grupo, done:{ studentId:true }, createdAt }]
+  exams: [],         // [{ id, title, desc, grado, grupo, questions:[{q,opts:[],correct}], createdAt }]
+  examResults: [],   // [{ examId, studentId, studentName, score, total, date }]
+  session: null      // { role:'teacher'|'student'|'parent', name, code?, studentId?, grado?, grupo? }
 };
 
 /* ╔══════════════════════════════════════════════════════════════════════╗
-   ║  Almacenamiento (localStorage + Firebase)                            ║
+   ║  Almacenamiento (localStorage + Firebase opcional)                    ║
    ╚══════════════════════════════════════════════════════════════════════╝ */
 function persistLocal(){
   try{
@@ -412,6 +444,7 @@ function loadLocal(){
 }
 function save(){ persistLocal(); fbPush(); }
 
+/* ── Firebase (sólo se activa si pegaste config real) ────────── */
 const fb = { ready:false, db:null, suppress:false };
 function firebaseConfigured(){
   const c = CONFIG.firebase;
@@ -502,6 +535,67 @@ function openModal(html){
   document.getElementById('modal').classList.add('open');
 }
 function closeModal(){ document.getElementById('modal').classList.remove('open'); }
+
+/* ── Seguridad: hash SHA-256 y control de intentos ─────────────
+   La contraseña del maestro nunca se guarda en plano. Lo que se compara
+   es el hash de (sal + ":" + contraseña). El usuario es público (no es
+   secreto). El navegador trae Web Crypto, así que no hace falta librería. */
+async function sha256(text){
+  const data = new TextEncoder().encode(String(text));
+  const buf  = await crypto.subtle.digest('SHA-256', data);
+  return Array.from(new Uint8Array(buf)).map(b=>b.toString(16).padStart(2,'0')).join('');
+}
+
+const ATTEMPTS_KEY = CONFIG.storeKey + '_login';
+
+function getLoginState(){
+  try{
+    const raw = localStorage.getItem(ATTEMPTS_KEY);
+    return raw ? JSON.parse(raw) : { fails:0, lockUntil:0, totalLockouts:0 };
+  }catch(_){ return { fails:0, lockUntil:0, totalLockouts:0 }; }
+}
+function setLoginState(s){
+  try{ localStorage.setItem(ATTEMPTS_KEY, JSON.stringify(s)); }catch(_){}
+}
+function lockoutRemainingMs(){
+  const s = getLoginState();
+  return Math.max(0, (s.lockUntil||0) - Date.now());
+}
+function isLockedOut(){ return lockoutRemainingMs() > 0; }
+function recordFailedLogin(){
+  const s = getLoginState();
+  s.fails = (s.fails||0) + 1;
+  if(s.fails >= CONFIG.loginMaxAttempts){
+    s.totalLockouts = (s.totalLockouts||0) + 1;
+    // Bloqueo creciente: 5 min, 15 min, 60 min, 4 h, 24 h
+    const mins = [
+      CONFIG.loginLockoutMin,
+      CONFIG.loginLockoutMin * 3,
+      CONFIG.loginLockoutMin * 12,
+      CONFIG.loginLockoutMin * 48,
+      CONFIG.loginLockoutMin * 288
+    ];
+    const m = mins[Math.min(s.totalLockouts-1, mins.length-1)];
+    s.lockUntil = Date.now() + m * 60 * 1000;
+    s.fails = 0;
+  }
+  setLoginState(s);
+}
+function clearFailedLogins(){
+  setLoginState({ fails:0, lockUntil:0, totalLockouts:0 });
+}
+function attemptsRemaining(){
+  const s = getLoginState();
+  return Math.max(0, CONFIG.loginMaxAttempts - (s.fails||0));
+}
+function fmtLockoutTime(ms){
+  const m = Math.ceil(ms/60000);
+  if(m >= 60){
+    const h = Math.floor(m/60), rm = m%60;
+    return rm ? `${h} h ${rm} min` : `${h} h`;
+  }
+  return `${m} ${m===1?'minuto':'minutos'}`;
+}
 
 /* ╔══════════════════════════════════════════════════════════════════════╗
    ║  Helpers de datos                                                     ║
@@ -606,11 +700,28 @@ function renderLanding(){
           <button class="role-tab ${loginRole==='student'?'active':''}" onclick="setLoginRole('student')">🧑‍🎓 Alumno</button>
           <button class="role-tab ${loginRole==='parent'?'active':''}" onclick="setLoginRole('parent')">👨‍👩‍👧 Padre / Madre</button>
         </div>
-        ${loginRole==='teacher' ? `
-          <div class="field"><label>Usuario</label><input id="liUser" type="text" autocomplete="username" placeholder="${esc(CONFIG.teacherUser)}"></div>
-          <div class="field"><label>Contraseña</label><input id="liPass" type="password" autocomplete="current-password" onkeydown="if(event.key==='Enter')doLogin()"></div>
-          <button class="btn btn-primary" style="width:100%;justify-content:center" onclick="doLogin()">Entrar al panel del maestro</button>
-        ` : loginRole==='student' ? `
+        ${loginRole==='teacher' ? (() => {
+          const locked = isLockedOut();
+          const rem = lockoutRemainingMs();
+          const attempts = attemptsRemaining();
+          if(locked){
+            return `
+              <div class="panel" style="background:#fef2f2;border:1.5px solid #fecaca;color:#991b1b">
+                <h3 style="color:#991b1b;margin-bottom:.4rem">🔒 Acceso bloqueado</h3>
+                <p style="margin:0;font-size:.88rem">Demasiados intentos fallidos. Vuelve a intentar en <strong>${fmtLockoutTime(rem)}</strong>.</p>
+              </div>
+              <button class="btn" style="width:100%;justify-content:center" onclick="render()">Actualizar</button>
+            `;
+          }
+          return `
+            <div class="field"><label>Usuario</label><input id="liUser" type="text" autocomplete="username"></div>
+            <div class="field"><label>Contraseña</label><input id="liPass" type="password" autocomplete="current-password" onkeydown="if(event.key==='Enter')doLogin()"></div>
+            <button class="btn btn-primary" style="width:100%;justify-content:center" onclick="doLogin()">Entrar al panel del maestro</button>
+            ${getLoginState().fails > 0
+              ? `<p class="hint" style="color:var(--orange);margin-top:.6rem">⚠️ Te quedan ${attempts} ${attempts===1?'intento':'intentos'} antes del bloqueo.</p>`
+              : ''}
+          `;
+        })() : loginRole==='student' ? `
           <div class="field"><label>Tu código de alumno</label><input id="liCode" type="text" placeholder="Ej: JUAN1" onkeydown="if(event.key==='Enter')doLogin()" style="text-transform:uppercase;letter-spacing:.04em;font-weight:700"></div>
           <button class="btn btn-primary" style="width:100%;justify-content:center" onclick="doLogin()">Entrar al panel del alumno</button>
           <p class="hint">Pídele tu código a tu maestro.</p>
@@ -622,7 +733,7 @@ function renderLanding(){
       </div>
       <p class="hint" style="text-align:center">
         ${firebaseConfigured()
-          ? '✅ Conectado en línea — los cambios se sincronizan entre dispositivos.'
+          ? 'Conectado en línea — los cambios se sincronizan entre dispositivos.'
           : 'Modo local — los datos se guardan en este navegador. Para sincronizar entre dispositivos, configura Firebase.'}
       </p>
     </div>
@@ -630,13 +741,37 @@ function renderLanding(){
 }
 function setLoginRole(r){ loginRole = r; render(); }
 
-function doLogin(){
+async function doLogin(){
   if(loginRole==='teacher'){
-    const u = ($('#liUser')?.value||'').trim();
-    const p = ($('#liPass')?.value||'').trim();
-    if(u!==CONFIG.teacherUser || p!==CONFIG.teacherPass){
-      toast('Usuario o contraseña incorrectos','error'); return;
+    // Verificar bloqueo
+    if(isLockedOut()){
+      toast(`Bloqueado. Espera ${fmtLockoutTime(lockoutRemainingMs())}`,'error');
+      render();
+      return;
     }
+    const u = ($('#liUser')?.value||'').trim();
+    const p = ($('#liPass')?.value||'');
+    if(!u || !p){ toast('Escribe usuario y contraseña','error'); return; }
+    // Hashear y comparar (la contraseña real NUNCA se guarda en el archivo)
+    let hash;
+    try{ hash = await sha256(CONFIG.teacherPassSalt + ':' + p); }
+    catch(_){ toast('Tu navegador no soporta cifrado seguro','error'); return; }
+    const ok = (u === CONFIG.teacherUser) && (hash === CONFIG.teacherPassHash);
+    if(!ok){
+      recordFailedLogin();
+      const st = getLoginState();
+      if(st.lockUntil && st.lockUntil > Date.now()){
+        toast(`Demasiados intentos. Bloqueado por ${fmtLockoutTime(st.lockUntil - Date.now())}`,'error');
+      } else {
+        const left = attemptsRemaining();
+        toast(`Credenciales incorrectas. Te quedan ${left} ${left===1?'intento':'intentos'}.`,'error');
+      }
+      // Limpiar campo contraseña y refrescar UI
+      const pwd = document.getElementById('liPass'); if(pwd) pwd.value = '';
+      render();
+      return;
+    }
+    clearFailedLogins();
     state.session = { role:'teacher', name:'Maestro/a' };
     render();
     toast('Bienvenido/a','success');
@@ -725,6 +860,7 @@ function viewAlumnos(){
   if(!all.length){
     return head + `<div class="empty"><div class="big">👥</div><p>Aún no hay alumnos.<br>Usa el botón <strong>Agregar alumno</strong> para empezar.</p></div>`;
   }
+  // Agrupar por grado/grupo
   const groups = sortedGroups().filter(g=>(g.students||[]).length);
   const body = groups.map(g=>{
     const students = (g.students||[]).slice().sort((a,b)=>String(a.name).localeCompare(String(b.name),'es'));
@@ -807,11 +943,13 @@ function saveAlumno(id){
   const tel = ($('#alTel')?.value||'').trim();
   if(!name){ toast('Falta el nombre','error'); return; }
   if(!code){ toast('Falta el código','error'); return; }
+  // Validar que el código sea único (excluyendo el propio si edita)
   const conflict = findStudentByCode(code);
   if(conflict && (!id || conflict.student.id!==id)){
     toast('Ese código ya lo usa otro alumno: '+conflict.student.name,'error'); return;
   }
   if(id){
+    // Editar: buscar al alumno, posiblemente moverlo de grupo
     let found = null;
     for(const gr of state.groups){
       const st = (gr.students||[]).find(x=>x.id===id);
@@ -820,8 +958,12 @@ function saveAlumno(id){
     if(!found){ toast('Alumno no encontrado','error'); return; }
     const sameGroup = String(found.group.grado)===String(grado) && String(found.group.grupo).toUpperCase()===grupo;
     if(!sameGroup){
+      // mover al alumno y arrastrar sus calificaciones
       const newG = getOrCreateGroup(grado, grupo);
+      // copiar calificaciones existentes para este alumno hacia las actividades del nuevo grupo solo si coinciden por nombre
+      // simplificación: no se arrastran; las del grupo anterior se borran junto con el alumno
       found.group.students = found.group.students.filter(x=>x.id!==id);
+      // limpiar grades del grupo anterior asociadas al alumno
       Object.keys(found.group.grades||{}).forEach(k=>{ if(k.startsWith(id+'_')) delete found.group.grades[k]; });
       newG.students.push({ id, name, telefono:tel, qrCode:code });
     } else {
@@ -1167,6 +1309,7 @@ function onTaskFileChosen(ev){
 }
 function saveTarea(){
   const urlField = $('#tkUrl').value.trim();
+  // Si hay archivo adjunto, gana sobre el enlace
   const url = _taskAttachment ? _taskAttachment.dataUrl : urlField;
   const attachmentName = _taskAttachment ? _taskAttachment.name : '';
   const obj = {
@@ -1314,7 +1457,7 @@ function verResultadosExamen(id){
   const rows = results.length ? results.map(r=>{
     const calif = ((r.score/r.total)*10).toFixed(1);
     return `<tr><td>${esc(r.studentName)}</td><td class="num">${r.score}/${r.total}</td><td class="num">${gradeChip(calif)}</td><td class="num" style="font-size:.78rem;color:var(--muted)">${fmtDate(r.date)}</td></tr>`;
-  }).join('') : `<td><td colspan="4" style="text-align:center;color:var(--muted);padding:1.5rem">Sin respuestas todavía</td></tr>`;
+  }).join('') : `<tr><td colspan="4" style="text-align:center;color:var(--muted);padding:1.5rem">Sin respuestas todavía</td></tr>`;
   openModal(`
     <div class="modal-head"><h3>📊 ${esc(e.title)}</h3><button class="modal-close" onclick="closeModal()">×</button></div>
     <div class="modal-body">
@@ -1464,6 +1607,7 @@ function studentMateriales(){
 
 function studentTareas(){
   const mine = state.tasks.filter(studentMatches).slice().sort((a,b)=>{
+    // pendientes primero (sin marcar), luego por fecha
     const da = a.done?.[state.session.studentId]?1:0, db = b.done?.[state.session.studentId]?1:0;
     if(da!==db) return da-db;
     return (a.dueDate||'').localeCompare(b.dueDate||'');
@@ -1716,12 +1860,14 @@ function parentResumen(){
     const v = (myGroup.grades||{})[me.id+'_'+a.id];
     return v!==undefined && v!==null && v!=='';
   }).length;
+  // tareas
   const sid = state.session.studentId;
   const tasks = state.tasks.filter(t=>
     (t.grado==='all'||String(t.grado)===String(myGroup.grado)) &&
     (t.grupo==='all'||String(t.grupo).toUpperCase()===String(myGroup.grupo).toUpperCase())
   );
   const tareasHechas = tasks.filter(t=>t.done&&t.done[sid]).length;
+  // exámenes
   const examResults = state.examResults.filter(r=>r.studentId===sid);
   return `
     <div class="panel tinted-green">
@@ -1741,7 +1887,7 @@ function parentResumen(){
           <thead><tr><th>Examen</th><th class="num">Aciertos</th><th class="num">Calif.</th><th class="num">Fecha</th></tr></thead>
           <tbody>${examResults.slice().sort((a,b)=>(b.date||'').localeCompare(a.date||'')).map(r=>{
             const e = state.exams.find(x=>x.id===r.examId);
-            return `<tr><td>${esc(e?e.title:'Examen')}</td><td class="num">${r.score}/${r.total}</td><td class="num">${gradeChip(((r.score/r.total)*10).toFixed(1))}</td><td class="num" style="font-size:.78rem;color:var(--muted)">${fmtDate(r.date)}</td</tr>`;
+            return `<tr><td>${esc(e?e.title:'Examen')}</td><td class="num">${r.score}/${r.total}</td><td class="num">${gradeChip(((r.score/r.total)*10).toFixed(1))}</td><td class="num" style="font-size:.78rem;color:var(--muted)">${fmtDate(r.date)}</td></tr>`;
           }).join('')}</tbody>
         </table></div>
       </div>
@@ -1756,6 +1902,7 @@ loadLocal();
 render();
 fbInit();
 
+// Atajo: doble clic en la barra para mostrar info de versión
 document.querySelector('.topbar')?.addEventListener('dblclick', ()=>{
   toast('Portal de Matemáticas v2 · '+(firebaseConfigured()?'Firebase activo':'modo local'),'success');
 });
